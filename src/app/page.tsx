@@ -12,10 +12,11 @@ import Video from "@/components/Video";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
+  title: "CodeCEF - Advanced Solutions for the Digital Era",
+  description: "CodeCEF specializes in scalable, future-ready software solutions that accelerate business growth and enhance operational efficiency.",
   // other metadata
 };
+
 
 export default function Home() {
   return (
@@ -27,9 +28,9 @@ export default function Home() {
       {/* <Brands /> */}
       <AboutSectionOne />
       <AboutSectionTwo />
-      <Testimonials />
-      <Pricing />
-      <Blog />
+      {/* <Testimonials /> */}
+      {/* <Pricing /> */}
+      {/* <Blog /> */}
       <Contact />
     </>
   );

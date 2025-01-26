@@ -14,8 +14,8 @@ const AboutPage = () => {
   return (
     <>
       <Breadcrumb
-        pageName="About Page"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
+        pageName="About CodeCEF"
+        description="At CodeCEF, we deliver innovative, scalable software solutions designed to drive business growth. Our expert team blends creativity with cutting-edge technology to provide high-quality, user-friendly products. We’re dedicated to helping businesses thrive in the digital era."
       />
       <AboutSectionOne />
       <AboutSectionTwo />
