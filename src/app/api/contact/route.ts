@@ -32,6 +32,16 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      return NextResponse.json(
+        {
+          error:
+            "Mail service is not configured. Please set SMTP_USER and SMTP_PASS.",
+        },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport(smtpConfig);
 
     await transporter.sendMail({
