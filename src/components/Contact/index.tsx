@@ -1,6 +1,60 @@
+"use client";
+
+import { FormEvent, useState } from "react";
 import NewsLatterBox from "./NewsLatterBox";
 
+type FormStatus = "idle" | "loading" | "success" | "error";
+
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setError(null);
+
+    if (!name || !email || !message) {
+      setError("Please complete all fields before submitting.");
+      return;
+    }
+
+    try {
+      setStatus("loading");
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload?.error || "Unable to send your message.");
+      }
+
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (submitError) {
+      const submitMessage =
+        submitError instanceof Error
+          ? submitError.message
+          : "Unable to send your message.";
+
+      setStatus("error");
+      setError(submitMessage);
+    } finally {
+      setStatus((previous) => (previous === "loading" ? "idle" : previous));
+    }
+  };
+
   return (
     <section id="contact" className="overflow-hidden py-16 md:py-20 lg:py-28">
       <div className="container">
@@ -17,7 +71,7 @@ const Contact = () => {
               <p className="mb-12 text-base font-medium text-body-color">
                 Our support team will get back to you ASAP via email.
               </p>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="-mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
                     <div className="mb-8">
@@ -28,8 +82,11 @@ const Contact = () => {
                         Your Name
                       </label>
                       <input
+                        id="name"
                         type="text"
                         placeholder="Enter your name"
+                        value={name}
+                        onChange={(event) => setName(event.target.value)}
                         className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
                       />
                     </div>
@@ -43,8 +100,11 @@ const Contact = () => {
                         Your Email
                       </label>
                       <input
+                        id="email"
                         type="email"
                         placeholder="Enter your email"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
                         className="border-stroke w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
                       />
                     </div>
@@ -58,17 +118,34 @@ const Contact = () => {
                         Your Message
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         rows={5}
                         placeholder="Enter your Message"
+                        value={message}
+                        onChange={(event) => setMessage(event.target.value)}
                         className="border-stroke w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
                       ></textarea>
                     </div>
                   </div>
                   <div className="w-full px-4">
-                    <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
-                      Submit Ticket
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-primary/70 dark:shadow-submit-dark"
+                    >
+                      {status === "loading" ? "Sending..." : "Submit Ticket"}
                     </button>
+                    {status === "success" ? (
+                      <p className="mt-4 text-sm font-medium text-green-600">
+                        Your ticket was submitted. We will respond via email.
+                      </p>
+                    ) : null}
+                    {error ? (
+                      <p className="mt-4 text-sm font-medium text-red-600">
+                        {error}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </form>
