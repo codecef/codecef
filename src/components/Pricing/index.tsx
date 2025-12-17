@@ -40,7 +40,7 @@ const Pricing = () => {
             </div>
 
             <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
-              <li>Up to 5 pages</li>
+              <li>Up to 15 pages</li>
               <li>Responsive design</li>
               <li>Modern UI</li>
               <li>Contact form</li>
