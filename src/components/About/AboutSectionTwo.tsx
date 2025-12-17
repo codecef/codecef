@@ -50,7 +50,6 @@ const AboutSectionTwo = () => {
                 We fine-tune solutions for maximum speed and scalability while providing dedicated, prompt support to resolve any challenges and maintain top-notch performance.
                 </p>
               </div>
-              
             </div>
           </div>
         </div>
