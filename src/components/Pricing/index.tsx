@@ -32,10 +32,10 @@ const Pricing = () => {
                 Offer Price
               </div>
               <div className="mt-1 text-2xl font-bold text-black dark:text-white">
-                ₹5,000 – ₹10,000
+                ₹5,000 – ₹25,000
               </div>
               <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
-                <span className="line-through">₹10,000 – ₹20,000</span>
+                <span className="line-through">₹15,000 – ₹40,000</span>
               </div>
             </div>
 
@@ -84,10 +84,10 @@ const Pricing = () => {
                 Offer Price
               </div>
               <div className="mt-1 text-2xl font-bold text-black dark:text-white">
-                ₹20,000 – ₹40,000
+                ₹25,000 – ₹70,000
               </div>
               <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
-                <span className="line-through">₹30,000 – ₹50,000</span>
+                <span className="line-through">₹40,000 – ₹99,000</span>
               </div>
             </div>
 
