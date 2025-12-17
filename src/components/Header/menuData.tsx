@@ -13,6 +13,18 @@ const menuData: Menu[] = [
     path: "/about",
     newTab: false,
   },
+  {
+    id: 4,
+    title: "Privacy Policy",
+    path: "/privacy-policy",
+    newTab: false,
+  },
+  {
+    id: 5,
+    title: "Refund Policy",
+    path: "/refund-policy",
+    newTab: false,
+  },
   // {
   //   id: 33,
   //   title: "Blog",

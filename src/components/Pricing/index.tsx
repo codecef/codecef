@@ -1,102 +1,172 @@
-"use client";
-import { useState } from "react";
 import SectionTitle from "../Common/SectionTitle";
-import OfferList from "./OfferList";
-import PricingBox from "./PricingBox";
 
 const Pricing = () => {
-  const [isMonthly, setIsMonthly] = useState(true);
-
   return (
     <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="Simple and Affordable Pricing"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          title="Simple & Transparent Pricing"
+          paragraph="Flexible pricing tailored for Indian startups, businesses, and founders. Choose a plan or contact us for custom solutions."
           center
-          width="665px"
+          width="700px"
         />
 
-        <div className="w-full">
-          <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
-            <span
-              onClick={() => setIsMonthly(true)}
-              className={`${
-                isMonthly
-                  ? "pointer-events-none text-primary"
-                  : "text-dark dark:text-white"
-              } mr-4 cursor-pointer text-base font-semibold`}
-            >
-              Monthly
-            </span>
-            <div
-              onClick={() => setIsMonthly(!isMonthly)}
-              className="flex cursor-pointer items-center"
-            >
-              <div className="relative">
-                <div className="h-5 w-14 rounded-full bg-[#1D2144] shadow-inner"></div>
-                <div
-                  className={`${
-                    isMonthly ? "" : "translate-x-full"
-                  } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
-                >
-                  <span className="active h-4 w-4 rounded-full bg-white"></span>
-                </div>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-black dark:text-white">
+                  Static Website &amp; Design
+                </h3>
+                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
+                  Perfect for individuals, startups, and small businesses looking for a professional online presence.
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/10">
+                🔥 Limited Offer
+              </span>
+            </div>
+
+            <div className="mb-6">
+              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
+                Offer Price
+              </div>
+              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
+                ₹5,000 – ₹10,000
+              </div>
+              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+                <span className="line-through">₹10,000 – ₹20,000</span>
               </div>
             </div>
-            <span
-              onClick={() => setIsMonthly(false)}
-              className={`${
-                isMonthly
-                  ? "text-dark dark:text-white"
-                  : "pointer-events-none text-primary"
-              } ml-4 cursor-pointer text-base font-semibold`}
-            >
-              Yearly
-            </span>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          <PricingBox
-            packageName="Lite"
-            price={isMonthly ? "40" : "120"}
-            duration={isMonthly ? "mo" : "yr"}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="inactive" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName="Basic"
-            price={isMonthly ? "399" : "789"}
-            duration={isMonthly ? "mo" : "yr"}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName="Plus"
-            price={isMonthly ? "589" : "999"}
-            duration={isMonthly ? "mo" : "yr"}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="active" />
-            <OfferList text="Free Lifetime Updates" status="active" />
-          </PricingBox>
+            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
+              <li>Up to 5 pages</li>
+              <li>Responsive design</li>
+              <li>Modern UI</li>
+              <li>Contact form</li>
+              <li>Basic SEO setup</li>
+              <li>Fast delivery</li>
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/contact"
+                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+              >
+                Contact Now
+              </a>
+              <a
+                href="/contact"
+                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+              >
+                Get Quote
+              </a>
+            </div>
+          </div>
+
+          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-black dark:text-white">
+                  Dynamic Website &amp; Database Systems
+                </h3>
+                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
+                  Best for businesses that need login systems, admin panels, databases, and dynamic features.
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/10">
+                🔥 Limited Offer
+              </span>
+            </div>
+
+            <div className="mb-6">
+              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
+                Offer Price
+              </div>
+              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
+                ₹20,000 – ₹40,000
+              </div>
+              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+                <span className="line-through">₹30,000 – ₹50,000</span>
+              </div>
+            </div>
+
+            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
+              <li>Backend + database integration</li>
+              <li>Admin dashboard</li>
+              <li>Authentication system</li>
+              <li>API integration</li>
+              <li>Scalable architecture</li>
+              <li>Deployment support</li>
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/contact"
+                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+              >
+                Contact Now
+              </a>
+              <a
+                href="/contact"
+                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+              >
+                Discuss Project
+              </a>
+            </div>
+          </div>
+
+          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-black dark:text-white">
+                  Custom Software &amp; MVP Development
+                </h3>
+                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
+                  Tailored solutions for startups, SaaS products, and businesses with unique requirements.
+                </p>
+              </div>
+              <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600 dark:bg-blue-500/10">
+                Custom Pricing
+              </span>
+            </div>
+
+            <div className="mb-6">
+              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
+                Pricing
+              </div>
+              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
+                Custom pricing
+              </div>
+              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+                Based on project scope and complexity
+              </div>
+            </div>
+
+            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
+              <li>MVP development</li>
+              <li>SaaS platforms</li>
+              <li>Custom dashboards</li>
+              <li>Automation systems</li>
+              <li>API &amp; cloud architecture</li>
+              <li>Long-term scalability planning</li>
+            </ul>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="/contact"
+                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+              >
+                Contact Now
+              </a>
+              <a
+                href="/contact"
+                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+              >
+                Book Consultation
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
