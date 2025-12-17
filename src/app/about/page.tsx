@@ -19,8 +19,8 @@ const AboutPage = () => {
         <div className="container">
           <div className="mx-auto max-w-3xl">
             <p className="mb-4 text-sm font-semibold text-black dark:text-white">
-              CodeCEF is a registered MSME under the Government of India (UDYAM).
-              <br />
+            CodeCEF (Creative Engineering Framework) is a registered MSME under the Government of India (UDYAM).
+            <br />
               UDYAM Registration No: UDYAM-BR-23-0108377
             </p>
             <h1 className="mb-5 text-3xl font-bold text-black dark:text-white sm:text-4xl">
