@@ -23,7 +23,7 @@ const projects: Project[] = [
     id: "1",
     title: "Siloq – SEO Architecture Platform",
     description: "AI-powered SaaS that automatically fixes website SEO structure and prevents keyword cannibalization",
-    category: "SaaS",
+    category: "Web Apps",
     techStack: ["Next.js", "Django", "Stripe", "PostgreSQL", "Tailwind CSS"],
     clientOrigin: "foreign",
     liveUrl: "https://siloq.ai/",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     id: "2",
     title: "TayAI – Academy AI Chatbot",
     description: "RAG-powered AI assistant for Tay's Luxe Academy handling student queries, course guidance and business support 24/7",
-    category: "SaaS",
+    category: "Web Apps",
     techStack: ["React", "FastAPI", "MySQL", "RAG AI Integration"],
     clientOrigin: "foreign",
     liveUrl: "https://ai.taysluxeacademy.com/",
@@ -48,7 +48,7 @@ const projects: Project[] = [
     id: "3",
     title: "VICIdial SMS Automation",
     description: "Custom SMS integration for VICIdial call center — auto-sends messages on Press 1 triggers and call dispositions",
-    category: "Custom Software",
+    category: "Web Apps",
     techStack: ["VICIdial", "PHP", "SMS Gateway API", "MySQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.vicidial.com/",
@@ -84,7 +84,7 @@ const projects: Project[] = [
     id: "6",
     title: "Decimal – Finance & Bookkeeping SaaS",
     description: "Full-featured bookkeeping and accounting platform covering bill pay, tax, invoicing, payroll and financial reporting",
-    category: "SaaS",
+    category: "Web Apps",
     techStack: ["Angular", "Spring Boot", "PostgreSQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.decimal.com/",
@@ -95,7 +95,7 @@ const projects: Project[] = [
 ];
 
 
-const categories = ["All", "Web Apps", "Mobile Apps", "E-commerce", "SaaS", "Foreign Projects"];
+const categories = ["All", "Web Apps", "Mobile Apps", "SaaS", "Custom Software"];
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
