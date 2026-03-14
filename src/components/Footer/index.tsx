@@ -1,388 +1,326 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 
 const Footer = () => {
   return (
     <>
-      <footer className="relative z-10 bg-white pt-16 dark:bg-gray-dark md:pt-20 lg:pt-24">
-        <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
-              <div className="mb-12 max-w-[360px] lg:mb-16">
-                <Link href="/" className="mb-8 inline-block">
-                  <Image
-                    src="/images/logo/codcefwhite.png"
-                    alt="logo"
-                    className="w-full dark:hidden"
-                    width={140}
-                    height={30}
-                  />
-                  <Image
-                    src="/images/logo/codecefdarkblue.png"
-                    alt="logo"
-                    className="hidden w-full dark:block"
-                    width={140}
-                    height={30}
-                  />
+      {/* PART 1 - Pre-Footer CTA Strip */}
+      <div className="w-full bg-[#1e293b] border-t-2 border-[#4f8ef7]">
+        <div className="container py-12 md:py-16">
+          <div className="text-center">
+            <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
+              Got a Project in Mind?
+            </h2>
+            <p className="mb-8 text-base text-gray-300 md:text-lg">
+              Let&apos;s build something great together. Free demo call — no commitment required.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-[#4f8ef7] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#3d7be6]"
+              >
+                📅 Book Free Demo
+              </Link>
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20start%20a%20project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-[#25D366] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[#128C7E]"
+              >
+                💬 WhatsApp Us
+              </Link>
+              <Link
+                href="https://www.linkedin.com/in/ahmad-raza-8b496b1b0/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg border-2 border-[#4f8ef7] px-6 py-3 text-base font-semibold text-[#4f8ef7] transition-colors hover:bg-[#4f8ef7] hover:text-white"
+              >
+                🔗 Connect on LinkedIn
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* PART 2 - Main Footer */}
+      <footer className="relative z-10 bg-[#0a0f1e] border-t border-[#4f8ef7]/15">
+        <div className="container py-20 md:py-16 sm:py-12">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+            {/* COLUMN 1: Brand */}
+            <div className="lg:col-span-1">
+              <div className="mb-6">
+                <Link href="/" className="mb-4 inline-block">
+                  <span className="flex items-center text-2xl font-bold text-white transition-all duration-300 hover:text-[#4f8ef7] hover:drop-shadow-[0_0_20px_rgba(79,142,247,0.5)]">
+                    <span className="text-[#4f8ef7] mr-1">&lt;</span>
+                    CodeCEF
+                    <span className="text-[#4f8ef7] ml-1">/&gt;</span>
+                  </span>
                 </Link>
-                <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                At CodeCEF, we deliver innovative, scalable software solutions designed to drive business growth
-                </p>
-                <div className="flex items-center">
-                  <a
+              </div>
+              
+              <p className="mb-6 text-sm leading-relaxed text-[#94a3b8]">
+                We build fast, scalable web & mobile apps for startups and businesses worldwide.
+              </p>
+              
+              <div className="mb-6 flex flex-wrap gap-4 text-xs text-[#94a3b8]">
+                <span className="flex items-center">
+                  🚀 20+ Projects
+                </span>
+                <span className="flex items-center">
+                  🌍 International Clients
+                </span>
+                <span className="flex items-center">
+                  ⚡ 10M+ req/day systems
+                </span>
+              </div>
+              
+              <div className="flex gap-3">
+                <Link
+                  href="https://www.linkedin.com/in/ahmad-raza-8b496b1b0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded border border-[#4f8ef7]/20 text-[#94a3b8] transition-all duration-200 hover:border-[#4f8ef7] hover:text-[#4f8ef7]"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                </Link>
+                <Link
+                  href="https://github.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded border border-[#4f8ef7]/20 text-[#94a3b8] transition-all duration-200 hover:border-[#4f8ef7] hover:text-[#4f8ef7]"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-.908 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </Link>
+                <Link
+                  href="https://wa.me/917470668602"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded border border-[#4f8ef7]/20 text-[#94a3b8] transition-all duration-200 hover:border-[#4f8ef7] hover:text-[#4f8ef7]"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.885-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c.003 5.45-4.433 9.884-9.882 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                </Link>
+                <Link
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-9 w-9 items-center justify-center rounded border border-[#4f8ef7]/20 text-[#94a3b8] transition-all duration-200 hover:border-[#4f8ef7] hover:text-[#4f8ef7]"
+                >
+                  <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069 3.205 0 3.584.011 4.849.07 3.26.149 4.77 1.699 4.919 4.92.058 1.265.07 1.645.07 4.849 0 3.203-.012 3.583-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07zm0-2.163c-3.259 0-3.667.014-4.947.072-2.358.1-3.633 1.356-3.732 3.732-.058 1.28-.07 1.689-.07 4.947 0 3.259.014 3.668.072 4.947.099 2.358 1.357 3.623 3.732 3.732 1.28.058 1.689.07 4.947.07 3.259 0 3.668-.014 4.947-.072 2.358-.099 3.623-1.357 3.732-3.732.058-1.28.07-1.689.07-4.947 0-3.259-.014-3.667-.07-4.947-.099-2.358-1.357-3.623-3.732-3.732-1.28-.058-1.69-.07-4.947-.07zM5.838 12a6.162 6.162 0 1112.324 0 6.162 6.162 0 01-12.324 0zM12 16a4 4 0 110-8 0 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 112.881.001 1.44 1.44 0 01-2.881-.001z"/>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+
+            {/* COLUMN 2: Quick Links */}
+            <div>
+              <h3 className="mb-6 text-xs font-bold uppercase tracking-wider text-[#4f8ef7]">
+                Quick Links
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
                     href="/"
-                    aria-label="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                   >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M12.1 10.4939V7.42705C12.1 6.23984 13.085 5.27741 14.3 5.27741H16.5V2.05296L13.5135 1.84452C10.9664 1.66676 8.8 3.63781 8.8 6.13287V10.4939H5.5V13.7183H8.8V20.1667H12.1V13.7183H15.4L16.5 10.4939H12.1Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="/"
-                    aria-label="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    → Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                   >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 22 22"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M13.9831 19.25L9.82094 13.3176L4.61058 19.25H2.40625L8.843 11.9233L2.40625 2.75H8.06572L11.9884 8.34127L16.9034 2.75H19.1077L12.9697 9.73737L19.6425 19.25H13.9831ZM16.4378 17.5775H14.9538L5.56249 4.42252H7.04674L10.808 9.6899L11.4584 10.6039L16.4378 17.5775Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@codecef-d2h"
-                    aria-label="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mr-6 text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    → About
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#features"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                   >
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      className="fill-current"
-                    >
-                      <path d="M17.5058 2.07119C17.3068 1.2488 16.7099 0.609173 15.9423 0.395963C14.5778 7.26191e-08 9.0627 0 9.0627 0C9.0627 0 3.54766 7.26191e-08 2.18311 0.395963C1.41555 0.609173 0.818561 1.2488 0.619565 2.07119C0.25 3.56366 0.25 6.60953 0.25 6.60953C0.25 6.60953 0.25 9.68585 0.619565 11.1479C0.818561 11.9703 1.41555 12.6099 2.18311 12.8231C3.54766 13.2191 9.0627 13.2191 9.0627 13.2191C9.0627 13.2191 14.5778 13.2191 15.9423 12.8231C16.7099 12.6099 17.3068 11.9703 17.5058 11.1479C17.8754 9.68585 17.8754 6.60953 17.8754 6.60953C17.8754 6.60953 17.8754 3.56366 17.5058 2.07119ZM7.30016 9.44218V3.77687L11.8771 6.60953L7.30016 9.44218Z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="/"
-                    aria-label="social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                    → Services
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#portfolio"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                   >
-                    <svg
-                      width="17"
-                      height="16"
-                      viewBox="0 0 17 16"
-                      className="fill-current"
-                    >
-                      <path d="M15.2196 0H1.99991C1.37516 0 0.875366 0.497491 0.875366 1.11936V14.3029C0.875366 14.8999 1.37516 15.4222 1.99991 15.4222H15.1696C15.7943 15.4222 16.2941 14.9247 16.2941 14.3029V1.09448C16.3441 0.497491 15.8443 0 15.2196 0ZM5.44852 13.1089H3.17444V5.7709H5.44852V13.1089ZM4.29899 4.75104C3.54929 4.75104 2.97452 4.15405 2.97452 3.43269C2.97452 2.71133 3.57428 2.11434 4.29899 2.11434C5.02369 2.11434 5.62345 2.71133 5.62345 3.43269C5.62345 4.15405 5.07367 4.75104 4.29899 4.75104ZM14.07 13.1089H11.796V9.55183C11.796 8.7061 11.771 7.58674 10.5964 7.58674C9.39693 7.58674 9.222 8.53198 9.222 9.47721V13.1089H6.94792V5.7709H9.17202V6.79076H9.19701C9.52188 6.19377 10.2466 5.59678 11.3711 5.59678C13.6952 5.59678 14.12 7.08925 14.12 9.12897V13.1089H14.07Z" />
-                    </svg>
-                  </a>
+                    → Portfolio
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#pricing"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Blog
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* COLUMN 3: Services */}
+            <div>
+              <h3 className="mb-6 text-xs font-bold uppercase tracking-wider text-[#4f8ef7]">
+                What We Build
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Web Applications
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Mobile Apps
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Custom Software
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → MVP Development
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → API Integration
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/#services"
+                    className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
+                  >
+                    → Cloud Solutions
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* COLUMN 4: Contact & Support */}
+            <div>
+              <h3 className="mb-6 text-xs font-bold uppercase tracking-wider text-[#4f8ef7]">
+                Get In Touch
+              </h3>
+              
+              <div className="mb-6 space-y-3">
+                <div className="flex items-center text-sm text-[#94a3b8]">
+                  <span className="mr-2">📍</span>
+                  <span>India (Remote Worldwide)</span>
                 </div>
+                <Link
+                  href="tel:+917470668602"
+                  className="flex items-center text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white"
+                >
+                  <span className="mr-2">📞</span>
+                  <span>+91 7470668602</span>
+                </Link>
+                <Link
+                  href="mailto:hello@codecef.com"
+                  className="flex items-center text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white"
+                >
+                  <span className="mr-2">✉️</span>
+                  <span>hello@codecef.com</span>
+                </Link>
               </div>
-            </div>
 
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Useful Links
-                </h2>
-                <ul>
+              <div className="mb-6">
+                <h4 className="mb-3 text-xs font-medium uppercase text-[#94a3b8]">
+                  Support
+                </h4>
+                <ul className="space-y-2">
                   <li>
                     <Link
-                      href="/blog"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      href="/contact"
+                      className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                     >
-                      Blog
+                      → Open Support Ticket
                     </Link>
                   </li>
-                  {/* <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Pricing
-                    </Link>
-                  </li> */}
-                  <li>
-                    <Link
-                      href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      About
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Terms
-                </h2>
-                <ul>
                   <li>
                     <Link
                       href="/privacy-policy"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                     >
-                      Privacy Policy
+                      → Privacy Policy
                     </Link>
                   </li>
                   <li>
                     <Link
                       href="/refund-policy"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                      className="text-sm text-[#94a3b8] transition-colors duration-200 hover:text-white hover:underline"
                     >
-                      Refund Policy
+                      → Refund Policy
                     </Link>
                   </li>
                 </ul>
               </div>
-            </div>
 
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Support & Help
-                </h2>
-                <ul>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Open Support Ticket
-                    </Link>
-                  </li>
-                </ul>
+              <div className="rounded-lg border border-green-500/30 bg-green-500/5 p-3">
+                <div className="flex items-center">
+                  <div className="relative mr-3">
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                    <div className="absolute h-2 w-2 animate-ping rounded-full bg-green-400"></div>
+                  </div>
+                  <div className="text-xs">
+                    <div className="font-medium text-white">🟢 Available for new projects</div>
+                    <div className="text-[#94a3b8]">Usually reply in 1hr</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
-          <div className="py-8">
-            <p className="text-center text-base text-body-color dark:text-white">
-              © 2025 CodeCEF. All rights reserved
-            </p>
+        {/* PART 3 - Bottom Bar */}
+        <div className="border-t border-[#4f8ef7]/10">
+          <div className="container py-6">
+            <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+              <p className="text-xs text-[#475569]">
+                © 2025 CodeCEF. All rights reserved.
+              </p>
+              <p className="text-xs text-[#475569]">
+                Built with ❤️ in India 🇮🇳
+              </p>
+            </div>
           </div>
-        </div>
-        <div className="absolute right-0 top-14 z-[-1]">
-          <svg
-            width="55"
-            height="99"
-            viewBox="0 0 55 99"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle opacity="0.8" cx="49.5" cy="49.5" r="49.5" fill="#959CB1" />
-            <mask
-              id="mask0_94:899"
-              style={{ maskType: "alpha" }}
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="99"
-              height="99"
-            >
-              <circle
-                opacity="0.8"
-                cx="49.5"
-                cy="49.5"
-                r="49.5"
-                fill="#4A6CF7"
-              />
-            </mask>
-            <g mask="url(#mask0_94:899)">
-              <circle
-                opacity="0.8"
-                cx="49.5"
-                cy="49.5"
-                r="49.5"
-                fill="url(#paint0_radial_94:899)"
-              />
-              <g opacity="0.8" filter="url(#filter0_f_94:899)">
-                <circle cx="53.8676" cy="26.2061" r="20.3824" fill="white" />
-              </g>
-            </g>
-            <defs>
-              <filter
-                id="filter0_f_94:899"
-                x="12.4852"
-                y="-15.1763"
-                width="82.7646"
-                height="82.7646"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
-                <feFlood floodOpacity="0" result="BackgroundImageFix" />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="BackgroundImageFix"
-                  result="shape"
-                />
-                <feGaussianBlur
-                  stdDeviation="10.5"
-                  result="effect1_foregroundBlur_94:899"
-                />
-              </filter>
-              <radialGradient
-                id="paint0_radial_94:899"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(49.5 49.5) rotate(90) scale(53.1397)"
-              >
-                <stop stopOpacity="0.47" />
-                <stop offset="1" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
-        <div className="absolute bottom-24 left-0 z-[-1]">
-          <svg
-            width="79"
-            height="94"
-            viewBox="0 0 79 94"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              opacity="0.3"
-              x="-41"
-              y="26.9426"
-              width="66.6675"
-              height="66.6675"
-              transform="rotate(-22.9007 -41 26.9426)"
-              fill="url(#paint0_linear_94:889)"
-            />
-            <rect
-              x="-41"
-              y="26.9426"
-              width="66.6675"
-              height="66.6675"
-              transform="rotate(-22.9007 -41 26.9426)"
-              stroke="url(#paint1_linear_94:889)"
-              strokeWidth="0.7"
-            />
-            <path
-              opacity="0.3"
-              d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L77.1885 68.2073L50.5215 7.42229Z"
-              fill="url(#paint2_linear_94:889)"
-            />
-            <path
-              d="M50.5215 7.42229L20.325 1.14771L46.2077 62.3249L76.7963 68.2073L50.5215 7.42229Z"
-              stroke="url(#paint3_linear_94:889)"
-              strokeWidth="0.7"
-            />
-            <path
-              opacity="0.3"
-              d="M17.9721 93.3057L-14.9695 88.2076L46.2077 62.325L77.1885 68.2074L17.9721 93.3057Z"
-              fill="url(#paint4_linear_94:889)"
-            />
-            <path
-              d="M17.972 93.3057L-14.1852 88.2076L46.2077 62.325L77.1884 68.2074L17.972 93.3057Z"
-              stroke="url(#paint5_linear_94:889)"
-              strokeWidth="0.7"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_94:889"
-                x1="-41"
-                y1="21.8445"
-                x2="36.9671"
-                y2="59.8878"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0.62" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint1_linear_94:889"
-                x1="25.6675"
-                y1="95.9631"
-                x2="-42.9608"
-                y2="20.668"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.51" />
-              </linearGradient>
-              <linearGradient
-                id="paint2_linear_94:889"
-                x1="20.325"
-                y1="-3.98039"
-                x2="90.6248"
-                y2="25.1062"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0.62" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint3_linear_94:889"
-                x1="18.3642"
-                y1="-1.59742"
-                x2="113.9"
-                y2="80.6826"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.51" />
-              </linearGradient>
-              <linearGradient
-                id="paint4_linear_94:889"
-                x1="61.1098"
-                y1="62.3249"
-                x2="-8.82468"
-                y2="58.2156"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0.62" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="paint5_linear_94:889"
-                x1="65.4236"
-                y1="65.0701"
-                x2="24.0178"
-                y2="41.6598"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#4A6CF7" stopOpacity="0" />
-                <stop offset="1" stopColor="#4A6CF7" stopOpacity="0.51" />
-              </linearGradient>
-            </defs>
-          </svg>
         </div>
       </footer>
     </>
