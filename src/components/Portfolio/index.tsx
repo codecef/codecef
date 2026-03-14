@@ -26,7 +26,7 @@ const projects: Project[] = [
     category: "E-commerce",
     techStack: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
     clientOrigin: "foreign",
-    liveUrl: "https://example.com",
+    liveUrl: "https://siloq.ai/",
     featured: true,
     problem: "Client needed a scalable e-commerce solution to handle 10,000+ daily visitors",
     solution: "Built a performant marketplace with optimized checkout flow and inventory management",
@@ -39,7 +39,7 @@ const projects: Project[] = [
     category: "SaaS",
     techStack: ["React", "Node.js", "MongoDB", "Chart.js"],
     clientOrigin: "indian",
-    liveUrl: "https://example.com",
+    liveUrl: "https://ai.taysluxeacademy.com/",
     problem: "Business needed real-time analytics for decision making",
     solution: "Created interactive dashboards with custom reporting features",
     result: "Reduced reporting time by 80%, improved data-driven decisions"
@@ -51,7 +51,7 @@ const projects: Project[] = [
     category: "Mobile Apps", 
     techStack: ["React Native", "Firebase", "Google Maps API"],
     clientOrigin: "indian",
-    liveUrl: "https://example.com",
+    liveUrl: "https://www.vicidial.com/",
     problem: "Restaurant chain needed digital ordering solution",
     solution: "Built user-friendly app with real-time order tracking",
     result: "25% increase in orders, 4.8-star rating from users"
@@ -63,22 +63,10 @@ const projects: Project[] = [
     category: "Web Apps",
     techStack: ["Vue.js", "Laravel", "MySQL", "AWS"],
     clientOrigin: "foreign", 
-    liveUrl: "https://example.com",
+    liveUrl: "https://tlinikah.com/",
     problem: "Real estate agency needed modern property management",
     solution: "Developed comprehensive portal with virtual tours",
     result: "40% faster property listings, improved client satisfaction"
-  },
-  {
-    id: "5",
-    title: "Healthcare Management",
-    description: "Patient management system for clinics",
-    category: "SaaS",
-    techStack: ["Angular", "Spring Boot", "PostgreSQL"],
-    clientOrigin: "indian",
-    liveUrl: "https://example.com",
-    problem: "Clinic needed digital patient record management",
-    solution: "Built HIPAA-compliant system with appointment scheduling",
-    result: "60% reduction in paperwork, improved patient care"
   },
   {
     id: "6",
@@ -87,11 +75,25 @@ const projects: Project[] = [
     category: "Web Apps",
     techStack: ["Next.js", "AWS", "Mux", "Prisma"],
     clientOrigin: "foreign",
-    liveUrl: "https://example.com",
+    liveUrl: "https://jsonformatters.online/",
     problem: "Education company needed scalable learning platform",
     solution: "Created platform with video streaming and progress tracking",
     result: "10,000+ active students, 95% course completion rate"
+  
+  },
+  {
+    id: "5",
+    title: "Healthcare Management",
+    description: "Patient management system for clinics",
+    category: "SaaS",
+    techStack: ["Angular", "Spring Boot", "PostgreSQL"],
+    clientOrigin: "indian",
+    liveUrl: "https://www.decimal.com/",
+    problem: "Clinic needed digital patient record management",
+    solution: "Built HIPAA-compliant system with appointment scheduling",
+    result: "60% reduction in paperwork, improved patient care"
   }
+  
 ];
 
 const categories = ["All", "Web Apps", "Mobile Apps", "E-commerce", "SaaS", "Foreign Projects"];
@@ -170,14 +172,23 @@ const Portfolio = () => {
                 className="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-dark"
               >
                 <div className="mb-4">
-                  <div className="relative h-40 w-full overflow-hidden rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 dark:from-primary/10 dark:to-primary/5">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-lg font-bold text-primary/50">Preview</span>
-                    </div>
+                  <div className="relative h-40 w-full overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+                    <iframe
+                      src={project.liveUrl}
+                      title={`${project.title} preview`}
+                      className="h-full w-full border-0"
+                      loading="lazy"
+                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                    />
                     <div className="absolute top-2 right-2">
                       <span className="rounded-full bg-white px-2 py-1 text-xs font-medium shadow dark:bg-gray-dark">
                         {project.clientOrigin === "foreign" ? "🌍" : "🇮🇳"}
                       </span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100">
+                      <div className="absolute bottom-2 left-2 right-2">
+                        <span className="text-xs font-medium text-white">Live Website</span>
+                      </div>
                     </div>
                   </div>
                 </div>
