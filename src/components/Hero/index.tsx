@@ -1,8 +1,17 @@
-/* eslint-disable react/no-unescaped-entities */
+"use client";
+
+/* eslint-disable react-no-unescaped-entities */
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
     <>
       <section
@@ -10,36 +19,120 @@ const Hero = () => {
         className="relative z-10 overflow-hidden bg-white pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
         <div className="container">
-          <div className="-mx-4 flex flex-wrap">
-            <div className="w-full px-4">
-              <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                Your Vision, Our Code, Powerful Solutions, Infinite Possibilities
+          <div className="-mx-4 flex flex-wrap items-center">
+            <div className="w-full px-4 lg:w-1/2">
+              <div className={`max-w-[600px] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <h1 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+                  Got a Software Idea? Let's Build It Right.
                 </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                Transform your business with CodeCEF's cutting-edge development expertise.
-                We craft scalable, future-ready solutions that position you as a leader in
-                the digital age. By blending creativity with technology, we unlock new 
-                opportunities for growth and innovation.
+                <p className="mb-10 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                  Book a FREE demo call — I'll personally review your idea, 
+                  suggest the best architecture, tech stack, and full roadmap. 
+                  No cost. No pressure. Just clarity.
                 </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                
+                <div className="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
-                    href="/contact"
-                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                    href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20call"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80 hover:shadow-lg"
                   >
-                    🔥 Contact Now
+                    Book Free Demo Call
                   </Link>
                   <Link
-                    href=""
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+                    href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20discuss%20my%20project"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block rounded-sm border border-primary bg-transparent px-8 py-4 text-base font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white"
                   >
-                    7470668602
+                    💬 Chat on WhatsApp
                   </Link>
+                </div>
+
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:justify-start">
+                  <div className="flex items-center text-sm text-body-color dark:text-body-color-dark">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <span>Free Architecture Advice</span>
+                  </div>
+                  <div className="flex items-center text-sm text-body-color dark:text-body-color-dark">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <span>No Commitment Required</span>
+                  </div>
+                  <div className="flex items-center text-sm text-body-color dark:text-body-color-dark">
+                    <span className="mr-2 text-green-500">✅</span>
+                    <span>Reply Within 1 Hour</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="w-full px-4 lg:w-1/2">
+              <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className="relative mx-auto max-w-[400px] rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-dark lg:max-w-[450px]">
+                  <div className="mb-4 flex items-center">
+                    <div className="relative">
+                      <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                      <div className="absolute h-3 w-3 animate-ping rounded-full bg-green-400"></div>
+                    </div>
+                    <span className="ml-3 text-sm font-medium text-body-color dark:text-body-color-dark">
+                      CodeCEF — Online Now
+                    </span>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+                      <p className="text-sm text-body-color dark:text-body-color-dark">
+                        I have an app idea but don't know where to start...
+                      </p>
+                    </div>
+                    
+                    <div className="rounded-lg bg-primary/10 p-3">
+                      <p className="text-sm font-medium text-primary">
+                        Let's hop on a free demo call! I'll give you the full roadmap.
+                      </p>
+                    </div>
+                    
+                    <Link
+                      href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20call"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block w-full rounded-sm bg-primary px-4 py-3 text-center text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                    >
+                      Book Free Call Now →
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        {/* Floating WhatsApp Button */}
+        <Link
+          href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20need%20help%20with%20my%20software"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-all duration-300 hover:bg-green-600 hover:scale-110"
+          style={{
+            animation: 'pulse 2s infinite',
+            backgroundColor: '#25D366'
+          }}
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 9.89-5.335 9.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+              fill="currentColor"
+            />
+          </svg>
+        </Link>
+
         <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
             width="450"
@@ -282,6 +375,20 @@ const Hero = () => {
           </svg>
         </div>
       </section>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+          }
+          70% {
+            box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+          }
+          100% {
+            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+          }
+        }
+      `}</style>
     </>
   );
 };
