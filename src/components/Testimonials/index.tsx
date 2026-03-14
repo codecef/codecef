@@ -191,7 +191,7 @@ const Testimonials = () => {
               💬 WhatsApp Us
             </Link>
             <Link
-              href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
+              href="https://www.linkedin.com/company/codecef/?viewAsMember=true"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-sm border-2 border-[#0077b5] px-6 py-3 text-base font-semibold text-[#0077b5] bg-transparent duration-300 ease-in-out hover:bg-[#0077b5] hover:text-white"
