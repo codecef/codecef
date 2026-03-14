@@ -37,7 +37,7 @@ const Hero = () => {
                     rel="noopener noreferrer"
                     className="rounded-sm bg-primary px-6 py-3 text-base font-bold text-white duration-300 ease-in-out hover:bg-primary/90 hover:shadow-lg transform hover:scale-105 transition-all lg:text-sm"
                   >
-                    📅 Book Google Meet
+                    📅 Book a Free Project Discussion
                   </Link>
                   <Link
                     href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20discuss%20my%20project"
