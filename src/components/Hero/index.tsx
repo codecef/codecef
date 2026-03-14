@@ -24,10 +24,10 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className={`max-w-[600px] transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <h1 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Got a Software Idea? Let's Build It Right.
+                  Got a Software Idea? Let&apos;s Build It Right.
                 </h1>
                 <p className="mb-10 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Book a FREE demo call — I'll personally review your idea, 
+                  Book a FREE demo call — I&apos;ll personally review your idea, 
                   suggest the best architecture, tech stack, and full roadmap. 
                   No cost. No pressure. Just clarity.
                 </p>
@@ -50,14 +50,14 @@ const Hero = () => {
                   >
                     💬 Chat on WhatsApp
                   </Link>
-                  <Link
+                  {/* <Link
                     href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27d%20like%20to%20schedule%20a%20quick%20call"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-sm border border-primary bg-transparent px-6 py-3 text-base font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white transform hover:scale-105 transition-all"
                   >
                     � Quick Call
-                  </Link>
+                  </Link> */}
                 </div>
 
                 <p className="mt-4 text-center text-sm text-body-color dark:text-body-color-dark sm:text-left lg:text-sm">
@@ -90,7 +90,7 @@ const Hero = () => {
                       <div className="absolute h-3 w-3 animate-ping rounded-full bg-green-400"></div>
                     </div>
                     <span className="ml-3 text-sm font-medium text-body-color dark:text-body-color-dark">
-                      🟢 CodeCEF — Available Now
+                      🟢 CodeCEF &mdash; Available Now
                     </span>
                   </div>
                   
