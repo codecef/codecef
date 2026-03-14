@@ -123,7 +123,7 @@ const Portfolio = () => {
 
   return (
     <>
-      <section className="py-16 bg-white dark:bg-gray-dark md:py-20 lg:py-24">
+      <section id="portfolio" className="py-16 bg-white dark:bg-gray-dark md:py-20 lg:py-24">
         <div className="container">
           {/* Section Header */}
           <div className="mb-12 text-center">

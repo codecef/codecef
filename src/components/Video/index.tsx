@@ -95,13 +95,17 @@ const Video = () => {
   ];
 
   return (
-    <section className="relative z-10 py-16 bg-[#0d1526] md:py-20 lg:py-28">
-      <div className="container">
-        {/* Section Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
-            Turning Ideas into Impact
-          </h2>
+    <>
+      <section id="process" className="relative z-10 py-16 bg-[#0d1526] md:py-20 lg:py-28">
+        <div className="container">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+              Turning Ideas into Impact
+            </h2>
+            <p className="mx-auto max-w-[600px] text-base text-gray-300 sm:text-lg">
+              From your first WhatsApp message to a live product — here&apos;s how we work
+            </p>
           <p className="mx-auto max-w-[600px] text-base text-gray-300 sm:text-lg">
             From your first WhatsApp message to a live product — here&apos;s how we work
           </p>
@@ -255,8 +259,9 @@ const Video = () => {
             ⚡ Usually reply within 1 hour
           </p>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };
 

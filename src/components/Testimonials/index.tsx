@@ -97,13 +97,17 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50 dark:bg-gray-900 md:py-20 lg:py-28">
-      <div className="container">
-        {/* Section Header */}
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
-            What Our Clients Say
-          </h2>
+    <>
+      <section id="testimonials" className="py-16 bg-gray-50 dark:bg-gray-900 md:py-20 lg:py-28">
+        <div className="container">
+          {/* Section Header */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
+              What Our Clients Say
+            </h2>
+            <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+              Real feedback from startups and businesses we&apos;ve worked with across India and internationally
+            </p>
           <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
             Real feedback from startups and businesses we&apos;ve worked with across India and internationally
           </p>
@@ -201,7 +205,8 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 };
 

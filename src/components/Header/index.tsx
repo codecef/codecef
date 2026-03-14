@@ -35,10 +35,30 @@ const Header = () => {
     setNavbarOpen(false);
   };
 
+  // Handle navigation - scroll if on home page, otherwise navigate
+  const handleNavigation = (link: any) => {
+    if (link.section) {
+      if (pathname === "/") {
+        // On home page, scroll to section
+        scrollToSection(link.section!);
+      } else {
+        // On other pages, navigate to home page with section hash
+        window.location.href = link.href;
+      }
+    } else {
+      // For regular links (like About), just navigate normally
+      window.location.href = link.href;
+    }
+    setNavbarOpen(false);
+  };
+
   const navLinks = [
     { name: "Home", href: "/", section: "home" },
     { name: "Services", href: "/#features", section: "features" },
     { name: "Portfolio", href: "/#portfolio", section: "portfolio" },
+    { name: "Pricing", href: "/#pricing", section: "pricing" },
+    { name: "Process", href: "/#process", section: "process" },
+    { name: "Testimonials", href: "/#testimonials", section: "testimonials" },
     { name: "About", href: "/about", section: null },
   ];
 
@@ -69,7 +89,9 @@ const Header = () => {
                 className={`flex items-center text-[22px] font-bold transition-all duration-300 hover:text-[#4f8ef7] hover:drop-shadow-[0_0_20px_rgba(79,142,247,0.5)] ${
                   sticky ? "text-white" : "text-[#4f8ef7]"
                 }`}
-                onClick={() => scrollToSection("home")}
+                onClick={() => {
+                  handleNavigation({ name: "Home", href: "/", section: "home" });
+                }}
               >
                 <span className="text-[#4f8ef7] mr-1">&lt;</span>
                 CodeCEF
@@ -83,7 +105,7 @@ const Header = () => {
                 <div key={link.name}>
                   {link.section ? (
                     <button
-                      onClick={() => scrollToSection(link.section!)}
+                      onClick={() => handleNavigation(link)}
                       className={`relative text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
                         isActive(link)
                           ? sticky ? "text-white" : "text-black"
@@ -221,8 +243,7 @@ const Header = () => {
                   href="/"
                   className="flex items-center text-[22px] font-bold text-white"
                   onClick={() => {
-                    scrollToSection("home");
-                    setNavbarOpen(false);
+                    handleNavigation({ name: "Home", href: "/", section: "home" });
                   }}
                 >
                   <span className="text-[#4f8ef7] mr-1">&lt;</span>
@@ -238,7 +259,7 @@ const Header = () => {
                     <li key={link.name}>
                       {link.section ? (
                         <button
-                          onClick={() => scrollToSection(link.section!)}
+                          onClick={() => handleNavigation(link)}
                           className={`block w-full text-left text-lg font-medium transition-colors hover:text-white py-4 ${
                             isActive(link) ? "text-white" : "text-[#cbd5e1]"
                           }`}

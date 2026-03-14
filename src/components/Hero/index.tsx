@@ -111,8 +111,8 @@ const Hero = () => {
                             </svg>
                           </div>
                           <div className="text-left">
-                            <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">📅 Schedule Video Call</p>
-                            <p className="text-xs text-body-color dark:text-body-color-dark">Book a free 30-minute consultation</p>
+                            <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">📅 Book a Google Meet</p>
+                            <p className="text-xs text-body-color dark:text-body-color-dark">30 min · Free · Video call</p>
                           </div>
                         </div>
                       </Link>
@@ -131,26 +131,7 @@ const Hero = () => {
                           </div>
                           <div className="text-left">
                             <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">💬 Chat on WhatsApp</p>
-                            <p className="text-xs text-body-color dark:text-body-color-dark">Get instant response to your query</p>
-                          </div>
-                        </div>
-                      </Link>
-                      
-                      <Link
-                        href="https://www.linkedin.com/in/ahmad-raza-8b496b1b0"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full rounded-lg bg-blue-50 border border-blue-200 p-4 hover:bg-blue-100 hover:border-blue-300 transition-all duration-300 group"
-                      >
-                        <div className="flex items-center">
-                          <div className="mr-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white">
-                            <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                          </div>
-                          <div className="text-left">
-                            <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">🔗 Connect on LinkedIn</p>
-                            <p className="text-xs text-body-color dark:text-body-color-dark">Follow our work and updates</p>
+                            <p className="text-xs text-body-color dark:text-body-color-dark">Instant reply · Text/Voice</p>
                           </div>
                         </div>
                       </Link>
