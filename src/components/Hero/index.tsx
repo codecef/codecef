@@ -79,7 +79,7 @@ const Hero = () => {
               </div>
             </div>
             
-            <div className="w-full px-4 lg:w-1/2">
+            <div className="w-full px-4 lg:w-1/2 hidden md:block">
               <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 <div className="relative mx-auto max-w-[400px] rounded-2xl bg-white p-6 shadow-2xl dark:bg-gray-dark lg:max-w-[450px] border border-gray-100 dark:border-gray-800">
                   <div className="mb-4 flex items-center">
