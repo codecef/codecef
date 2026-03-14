@@ -48,18 +48,18 @@ const Hero = () => {
                   >
                     💬 Chat on WhatsApp
                   </Link>
-                  {/* <Link
-                    href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27d%20like%20to%20schedule%20a%20quick%20call"
+                  <Link
+                    href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-sm border border-primary bg-transparent px-6 py-3 text-base font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white transform hover:scale-105 transition-all"
+                    className="rounded-sm border-2 border-[#0077b5] px-6 py-3 text-base font-semibold text-[#0077b5] bg-transparent duration-300 ease-in-out hover:bg-[#0077b5] hover:text-white transform hover:scale-105 transition-all"
                   >
-                    � Quick Call
-                  </Link> */}
+                    🔗 Connect on LinkedIn
+                  </Link>
                 </div>
 
                 <p className="mt-4 text-center text-sm text-body-color dark:text-body-color-dark sm:text-left lg:text-sm">
-                  Not sure which to pick? 👆 Google Meet for video call · WhatsApp to chat first
+                  � Video call · 💬 Chat first · 🔗 Let's connect
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:justify-start">

@@ -1,180 +1,205 @@
-import { Testimonial } from "@/types/testimonial";
-import SectionTitle from "../Common/SectionTitle";
-import SingleTestimonial from "./SingleTestimonial";
+"use client";
 
-const testimonialData: Testimonial[] = [
-  {
-    id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-01.png",
-    star: 5,
-  },
-  {
-    id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-02.png",
-    star: 5,
-  },
-  {
-    id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-03.png",
-    star: 5,
-  },
-];
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Testimonials = () => {
-  return (
-    <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28">
-      <div className="container">
-        <SectionTitle
-          title="What Our Clients Say"
-          paragraph="Hear from our clients about how CodeCEF's innovative and tailored solutions have transformed their businesses. Real stories, real impact."
-          center
-        />
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          {testimonialData.map((testimonial) => (
-            <SingleTestimonial key={testimonial.id} testimonial={testimonial} />
+  const testimonials = [
+    {
+      id: 1,
+      name: "Rahul Sharma",
+      company: "TechStart India 🇮🇳",
+      rating: 5,
+      initials: "RS",
+      avatarColor: "bg-blue-500",
+      review: "CodeCEF built our entire MVP in just 3 weeks. The architecture was clean, scalable and exactly what we needed to pitch to investors. Highly recommended!",
+      tag: "MVP Development"
+    },
+    {
+      id: 2,
+      name: "James Mitchell",
+      company: "LaunchPad UK 🇬🇧",
+      rating: 5,
+      initials: "JM",
+      avatarColor: "bg-purple-500",
+      review: "Working with CodeCEF was seamless despite the timezone difference. Professional communication, clean code delivery, and they genuinely understood our product vision.",
+      tag: "Web Application"
+    },
+    {
+      id: 3,
+      name: "Priya Patel",
+      company: "ShopEase India 🇮🇳",
+      rating: 5,
+      initials: "PP",
+      avatarColor: "bg-green-500",
+      review: "Our e-commerce platform handles 500+ orders daily without a single issue. CodeCEF delivered beyond our expectations and on time.",
+      tag: "E-commerce"
+    },
+    {
+      id: 4,
+      name: "David Thompson",
+      company: "SaaS Ventures USA 🇺🇸",
+      rating: 5,
+      initials: "DT",
+      avatarColor: "bg-orange-500",
+      review: "I've worked with many dev agencies — CodeCEF stands out. They don't just code, they think about your business goals. Will definitely work again.",
+      tag: "SaaS Development"
+    },
+    {
+      id: 5,
+      name: "Amit Verma",
+      company: "FinTrack India 🇮🇳",
+      rating: 5,
+      initials: "AV",
+      avatarColor: "bg-red-500",
+      review: "The mobile app they built for us has 4.8 stars on Play Store. Users love the UI and the performance is outstanding.",
+      tag: "Mobile App"
+    },
+    {
+      id: 6,
+      name: "Sarah Collins",
+      company: "EduTech Australia 🇦🇺",
+      rating: 5,
+      initials: "SC",
+      avatarColor: "bg-teal-500",
+      review: "CodeCEF helped us migrate to the cloud and integrate 3 third-party APIs. Zero downtime, great documentation, and super responsive team.",
+      tag: "Cloud + API"
+    }
+  ];
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardId = parseInt(entry.target.getAttribute("data-card-id") || "0");
+            setVisibleCards((prev) => [...prev, cardId]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const cards = document.querySelectorAll("[data-card-id]");
+    cards.forEach((card) => observer.observe(card));
+
+    return () => {
+      cards.forEach((card) => observer.unobserve(card));
+    };
+  }, []);
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, i) => (
+      <span key={i} className="text-yellow-400 text-sm">⭐</span>
+    ));
+  };
+
+  return (
+    <section className="py-16 bg-gray-50 dark:bg-gray-900 md:py-20 lg:py-28">
+      <div className="container">
+        {/* Section Header */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
+            What Our Clients Say
+          </h2>
+          <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            Real feedback from startups and businesses we've worked with across India and internationally
+          </p>
+        </div>
+
+        {/* Star Rating Bar */}
+        <div className="mb-12 rounded-lg bg-white p-6 text-center shadow-sm dark:bg-gray-dark">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-body-color dark:text-body-color-dark sm:gap-8 sm:text-base">
+            <span className="flex items-center">
+              {renderStars(5)} 5.0 Rating
+            </span>
+            <span>20+ Happy Clients</span>
+            <span>🌍 India & International</span>
+          </div>
+        </div>
+
+        {/* Testimonials Grid */}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mb-16">
+          {testimonials.map((testimonial) => (
+            <div
+              key={testimonial.id}
+              data-card-id={testimonial.id}
+              className={`rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-700 hover:shadow-lg hover:-translate-y-1 dark:border-gray-800 dark:bg-gray-dark ${
+                visibleCards.includes(testimonial.id)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+              }`}
+            >
+              {/* Star Rating */}
+              <div className="mb-4 flex items-center">
+                {renderStars(testimonial.rating)}
+              </div>
+
+              {/* Review Text */}
+              <blockquote className="mb-6 text-base italic leading-relaxed text-body-color dark:text-body-color-dark">
+                "{testimonial.review}"
+              </blockquote>
+
+              {/* Tag Badge */}
+              <div className="mb-4">
+                <span className="inline-block rounded-sm bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20">
+                  {testimonial.tag}
+                </span>
+              </div>
+
+              {/* Author Info */}
+              <div className="flex items-center">
+                <div className={`flex h-10 w-10 items-center justify-center rounded-full ${testimonial.avatarColor} text-white font-semibold text-sm`}>
+                  {testimonial.initials}
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm font-semibold text-black dark:text-white">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-body-color dark:text-body-color-dark">
+                    {testimonial.company}
+                  </p>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-      <div className="absolute right-0 top-5 z-[-1]">
-        <svg
-          width="238"
-          height="531"
-          viewBox="0 0 238 531"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            opacity="0.3"
-            x="422.819"
-            y="-70.8145"
-            width="196"
-            height="541.607"
-            rx="2"
-            transform="rotate(51.2997 422.819 -70.8145)"
-            fill="url(#paint0_linear_83:2)"
-          />
-          <rect
-            opacity="0.3"
-            x="426.568"
-            y="144.886"
-            width="59.7544"
-            height="541.607"
-            rx="2"
-            transform="rotate(51.2997 426.568 144.886)"
-            fill="url(#paint1_linear_83:2)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_83:2"
-              x1="517.152"
-              y1="-251.373"
-              x2="517.152"
-              y2="459.865"
-              gradientUnits="userSpaceOnUse"
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <h3 className="mb-6 text-2xl font-bold text-black dark:text-white sm:text-3xl">
+            Ready to be our next success story?
+          </h3>
+          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm bg-primary px-6 py-3 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/90 hover:shadow-lg"
             >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_83:2"
-              x1="455.327"
-              y1="-35.673"
-              x2="455.327"
-              y2="675.565"
-              gradientUnits="userSpaceOnUse"
+              📅 Book Free Demo
+            </Link>
+            <Link
+              href="https://wa.me/917470668602"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm px-6 py-3 text-base font-semibold text-white duration-300 ease-in-out hover:shadow-lg"
+              style={{ backgroundColor: '#25D366' }}
             >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-      <div className="absolute bottom-5 left-0 z-[-1]">
-        <svg
-          width="279"
-          height="106"
-          viewBox="0 0 279 106"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g opacity="0.5">
-            <path
-              d="M-57 12L50.0728 74.8548C55.5501 79.0219 70.8513 85.7589 88.2373 79.3692C109.97 71.3821 116.861 60.9642 156.615 63.7423C178.778 65.291 195.31 69.2985 205.911 62.3533C216.513 55.408 224.994 47.7682 243.016 49.1572C255.835 50.1453 265.278 50.8936 278 45.3373"
-              stroke="url(#paint0_linear_72:302)"
-            />
-            <path
-              d="M-57 1L50.0728 63.8548C55.5501 68.0219 70.8513 74.7589 88.2373 68.3692C109.97 60.3821 116.861 49.9642 156.615 52.7423C178.778 54.291 195.31 58.2985 205.911 51.3533C216.513 44.408 224.994 36.7682 243.016 38.1572C255.835 39.1453 265.278 39.8936 278 34.3373"
-              stroke="url(#paint1_linear_72:302)"
-            />
-            <path
-              d="M-57 23L50.0728 85.8548C55.5501 90.0219 70.8513 96.7589 88.2373 90.3692C109.97 82.3821 116.861 71.9642 156.615 74.7423C178.778 76.291 195.31 80.2985 205.911 73.3533C216.513 66.408 224.994 58.7682 243.016 60.1572C255.835 61.1453 265.278 61.8936 278 56.3373"
-              stroke="url(#paint2_linear_72:302)"
-            />
-            <path
-              d="M-57 35L50.0728 97.8548C55.5501 102.022 70.8513 108.759 88.2373 102.369C109.97 94.3821 116.861 83.9642 156.615 86.7423C178.778 88.291 195.31 92.2985 205.911 85.3533C216.513 78.408 224.994 70.7682 243.016 72.1572C255.835 73.1453 265.278 73.8936 278 68.3373"
-              stroke="url(#paint3_linear_72:302)"
-            />
-          </g>
-          <defs>
-            <linearGradient
-              id="paint0_linear_72:302"
-              x1="256.267"
-              y1="53.6717"
-              x2="-40.8688"
-              y2="8.15715"
-              gradientUnits="userSpaceOnUse"
+              💬 WhatsApp Us
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm border-2 border-[#0077b5] px-6 py-3 text-base font-semibold text-[#0077b5] bg-transparent duration-300 ease-in-out hover:bg-[#0077b5] hover:text-white"
             >
-              <stop stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_72:302"
-              x1="256.267"
-              y1="42.6717"
-              x2="-40.8688"
-              y2="-2.84285"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" />
-            </linearGradient>
-            <linearGradient
-              id="paint2_linear_72:302"
-              x1="256.267"
-              y1="64.6717"
-              x2="-40.8688"
-              y2="19.1572"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" />
-            </linearGradient>
-            <linearGradient
-              id="paint3_linear_72:302"
-              x1="256.267"
-              y1="76.6717"
-              x2="-40.8688"
-              y2="31.1572"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" stopOpacity="0" />
-              <stop offset="1" stopColor="#4A6CF7" />
-            </linearGradient>
-          </defs>
-        </svg>
+              🔗 LinkedIn
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );
