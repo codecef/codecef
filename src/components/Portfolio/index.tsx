@@ -21,80 +21,79 @@ interface Project {
 const projects: Project[] = [
   {
     id: "1",
-    title: "E-Commerce Platform",
-    description: "Full-stack online marketplace with payment integration",
-    category: "E-commerce",
-    techStack: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
+    title: "Siloq – SEO Architecture Platform",
+    description: "AI-powered SaaS that automatically fixes website SEO structure and prevents keyword cannibalization",
+    category: "SaaS",
+    techStack: ["Next.js", "Django", "Stripe", "PostgreSQL", "Tailwind CSS"],
     clientOrigin: "foreign",
     liveUrl: "https://siloq.ai/",
     featured: true,
-    problem: "Client needed a scalable e-commerce solution to handle 10,000+ daily visitors",
-    solution: "Built a performant marketplace with optimized checkout flow and inventory management",
-    result: "300% increase in conversions, 99.9% uptime, handling 50K+ daily visitors"
+    problem: "Business owners were unknowingly publishing content that competed against itself, destroying their Google rankings",
+    solution: "Built a full SaaS platform with automated SEO silo architecture, keyword cannibalization detection, content blocking and 24/7 site monitoring across up to 20 sites",
+    result: "Live paid SaaS with subscription plans from $199–$1999/month, replacing expensive manual SEO audits"
   },
   {
-    id: "2", 
-    title: "SaaS Dashboard",
-    description: "Analytics dashboard for business intelligence",
+    id: "2",
+    title: "TayAI – Academy AI Chatbot",
+    description: "RAG-powered AI assistant for Tay's Luxe Academy handling student queries, course guidance and business support 24/7",
     category: "SaaS",
-    techStack: ["React", "Node.js", "MongoDB", "Chart.js"],
-    clientOrigin: "indian",
+    techStack: ["React", "FastAPI", "MySQL", "RAG AI Integration"],
+    clientOrigin: "foreign",
     liveUrl: "https://ai.taysluxeacademy.com/",
-    problem: "Business needed real-time analytics for decision making",
-    solution: "Created interactive dashboards with custom reporting features",
-    result: "Reduced reporting time by 80%, improved data-driven decisions"
+    problem: "Luxury beauty academy was spending hours daily on repetitive student support queries",
+    solution: "Integrated a custom AI chatbot trained on academy content using RAG architecture for instant context-aware responses",
+    result: "80% reduction in manual support time with students getting answers in under 10 seconds"
   },
   {
     id: "3",
-    title: "Food Delivery App",
-    description: "Mobile-first food ordering platform",
-    category: "Mobile Apps", 
-    techStack: ["React Native", "Firebase", "Google Maps API"],
+    title: "VICIdial SMS Automation",
+    description: "Custom SMS integration for VICIdial call center — auto-sends messages on Press 1 triggers and call dispositions",
+    category: "Custom Software",
+    techStack: ["VICIdial", "PHP", "SMS Gateway API", "MySQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.vicidial.com/",
-    problem: "Restaurant chain needed digital ordering solution",
-    solution: "Built user-friendly app with real-time order tracking",
-    result: "25% increase in orders, 4.8-star rating from users"
+    problem: "Call center was manually sending SMS follow-ups after every call — slow, inconsistent and error-prone",
+    solution: "Built a custom external SMS integration inside VICIdial that automatically fires personalized SMS on Press 1 or agent disposition",
+    result: "100% automated SMS follow-ups with zero manual effort and faster lead response time"
   },
   {
     id: "4",
-    title: "Real Estate Portal",
-    description: "Property listing and management system",
+    title: "Tlinikah – Matrimonial Platform",
+    description: "Full-featured matrimonial web app for Muslim marriage matching with advanced profile search and secure messaging",
     category: "Web Apps",
-    techStack: ["Vue.js", "Laravel", "MySQL", "AWS"],
-    clientOrigin: "foreign", 
-    liveUrl: "https://tlinikah.com/",
-    problem: "Real estate agency needed modern property management",
-    solution: "Developed comprehensive portal with virtual tours",
-    result: "40% faster property listings, improved client satisfaction"
-  },
-  {
-    id: "6",
-    title: "Learning Platform",
-    description: "Online education portal with video streaming",
-    category: "Web Apps",
-    techStack: ["Next.js", "AWS", "Mux", "Prisma"],
+    techStack: ["Next.js", "Django", "MySQL", "AWS"],
     clientOrigin: "foreign",
-    liveUrl: "https://jsonformatters.online/",
-    problem: "Education company needed scalable learning platform",
-    solution: "Created platform with video streaming and progress tracking",
-    result: "10,000+ active students, 95% course completion rate"
-  
+    liveUrl: "https://tlinikah.com/",
+    problem: "Client needed a modern matrimonial platform for the global Muslim community with proper matching and privacy controls",
+    solution: "Built a complete matrimonial portal with profile creation, compatibility filters, match suggestions, photo privacy and secure messaging",
+    result: "Successfully launched for international Muslim community with active profiles from multiple countries"
   },
   {
     id: "5",
-    title: "Healthcare Management",
-    description: "Patient management system for clinics",
+    title: "JSON Formatters – Dev Tools Platform",
+    description: "Multi-tool online platform for developers with JSON formatter, validator and essential web utilities",
+    category: "Web Apps",
+    techStack: ["Next.js", "AWS", "Prisma", "Mux"],
+    clientOrigin: "foreign",
+    liveUrl: "https://jsonformatters.online/",
+    problem: "Developers needed fast reliable browser-based tools for everyday tasks without installing anything locally",
+    solution: "Built a clean fast multi-tool platform with JSON formatting, validation and multiple developer utility tools in one place",
+    result: "Growing organic developer traffic with a fast lightweight SEO-optimized tool platform"
+  },
+  {
+    id: "6",
+    title: "Decimal – Finance & Bookkeeping SaaS",
+    description: "Full-featured bookkeeping and accounting platform covering bill pay, tax, invoicing, payroll and financial reporting",
     category: "SaaS",
     techStack: ["Angular", "Spring Boot", "PostgreSQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.decimal.com/",
-    problem: "Clinic needed digital patient record management",
-    solution: "Built HIPAA-compliant system with appointment scheduling",
-    result: "60% reduction in paperwork, improved patient care"
+    problem: "Businesses were struggling with manual bookkeeping, scattered financial data and slow month-end closing",
+    solution: "Built a comprehensive finance platform covering bookkeeping, tax, bill pay, expense management, invoicing, payroll and financial reporting",
+    result: "Clients close books 35% faster, saving 10+ hours per week on accounting tasks"
   }
-  
 ];
+
 
 const categories = ["All", "Web Apps", "Mobile Apps", "E-commerce", "SaaS", "Foreign Projects"];
 
