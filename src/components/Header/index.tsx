@@ -1,184 +1,273 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import ThemeToggler from "./ThemeToggler";
-import menuData from "./menuData";
 
 const Header = () => {
-  // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const navbarToggleHandler = () => {
-    setNavbarOpen(!navbarOpen);
-  };
-
-  // Sticky Navbar
   const [sticky, setSticky] = useState(false);
-  const handleStickyNavbar = () => {
-    if (window.scrollY >= 80) {
-      setSticky(true);
-    } else {
-      setSticky(false);
-    }
-  };
+  const pathname = usePathname();
+
+  // Sticky Navbar with glass effect
   useEffect(() => {
-    window.addEventListener("scroll", handleStickyNavbar);
-  });
+    const handleStickyNavbar = () => {
+      if (window.scrollY >= 80) {
+        setSticky(true);
+      } else {
+        setSticky(false);
+      }
+    };
 
-  // submenu handler
-  const [openIndex, setOpenIndex] = useState(-1);
-  const handleSubmenu = (index) => {
-    if (openIndex === index) {
-      setOpenIndex(-1);
-    } else {
-      setOpenIndex(index);
+    window.addEventListener("scroll", handleStickyNavbar);
+    return () => window.removeEventListener("scroll", handleStickyNavbar);
+  }, []);
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
+    setNavbarOpen(false);
   };
 
-  const usePathName = usePathname();
+  const navLinks = [
+    { name: "Home", href: "/", section: "home" },
+    { name: "Services", href: "/#features", section: "features" },
+    { name: "Portfolio", href: "/#portfolio", section: "portfolio" },
+    { name: "About", href: "/about", section: null },
+    { name: "Support", href: "/contact", section: null },
+  ];
+
+  const isActive = (link: any) => {
+    if (link.section) {
+      return pathname === "/" && window.scrollY < 200 && link.section === "home";
+    }
+    return pathname === link.href;
+  };
 
   return (
     <>
       <header
-        className={`header left-0 top-0 z-40 flex w-full items-center ${
+        className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
           sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999] bg-white !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
-            : "absolute bg-transparent"
+            ? "bg-[#0f172a]/90 backdrop-blur-md shadow-lg"
+            : "bg-transparent"
         }`}
       >
         <div className="container">
-          <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
+          <nav className="flex h-16 items-center justify-between md:h-20">
+            {/* Logo */}
+            <div className="flex items-center">
               <Link
                 href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
+                className="flex items-center text-xl font-bold text-white transition-colors hover:text-primary"
+                onClick={() => scrollToSection("home")}
               >
-                <Image
-                  src="/images/logo/codcefwhite.png"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
-                />
-                <Image
-                  src="/images/logo/codecefdarkblue.png"
-                  alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                />
+                <span className="text-primary mr-1">&lt;</span>
+                CodeCEF
+                <span className="text-primary ml-1">/&gt;</span>
               </Link>
             </div>
-            <div className="flex w-full items-center justify-between px-4">
-              <div>
-                <button
-                  onClick={navbarToggleHandler}
-                  id="navbarToggler"
-                  aria-label="Mobile Menu"
-                  className="absolute right-4 top-1/2 block translate-y-[-50%] rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
-                >
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[7px] rotate-45" : " "
-                    }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? "opacity-0 " : " "
-                    }`}
-                  />
-                  <span
-                    className={`relative my-1.5 block h-0.5 w-[30px] bg-black transition-all duration-300 dark:bg-white ${
-                      navbarOpen ? " top-[-8px] -rotate-45" : " "
-                    }`}
-                  />
-                </button>
-                <nav
-                  id="navbarCollapse"
-                  className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
-                    navbarOpen
-                      ? "visibility top-full opacity-100"
-                      : "invisible top-[120%] opacity-0"
-                  }`}
-                >
-                  <ul className="block lg:flex lg:space-x-12">
-                    {menuData.map((menuItem, index) => (
-                      <li key={index} className="group relative">
-                        {menuItem.path ? (
-                          <Link
-                            href={menuItem.path}
-                            className={`flex py-2 text-base lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 ${
-                              usePathName === menuItem.path
-                                ? "text-primary dark:text-white"
-                                : "text-dark hover:text-primary dark:text-white/70 dark:hover:text-white"
-                            }`}
-                          >
-                            {menuItem.title}
-                          </Link>
-                        ) : (
-                          <>
-                            <p
-                              onClick={() => handleSubmenu(index)}
-                              className="flex cursor-pointer items-center justify-between py-2 text-base text-dark group-hover:text-primary dark:text-white/70 dark:group-hover:text-white lg:mr-0 lg:inline-flex lg:px-0 lg:py-6"
-                            >
-                              {menuItem.title}
-                              <span className="pl-3">
-                                <svg width="25" height="24" viewBox="0 0 25 24">
-                                  <path
-                                    fillRule="evenodd"
-                                    clipRule="evenodd"
-                                    d="M6.29289 8.8427C6.68342 8.45217 7.31658 8.45217 7.70711 8.8427L12 13.1356L16.2929 8.8427C16.6834 8.45217 17.3166 8.45217 17.7071 8.8427C18.0976 9.23322 18.0976 9.86639 17.7071 10.2569L12 15.964L6.29289 10.2569C5.90237 9.86639 5.90237 9.23322 6.29289 8.8427Z"
-                                    fill="currentColor"
-                                  />
-                                </svg>
-                              </span>
-                            </p>
-                            <div
-                              className={`submenu relative left-0 top-full rounded-sm bg-white transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
-                                openIndex === index ? "block" : "hidden"
-                              }`}
-                            >
-                              {menuItem.submenu.map((submenuItem, index) => (
-                                <Link
-                                  href={submenuItem.path}
-                                  key={index}
-                                  className="block rounded py-2.5 text-sm text-dark hover:text-primary dark:text-white/70 dark:hover:text-white lg:px-3"
-                                >
-                                  {submenuItem.title}
-                                </Link>
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0">
-                <Link
-                  href="/signin"
-                  className="hidden px-7 py-3 text-base font-medium text-dark hover:opacity-70 dark:text-white md:block"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/signup"
-                  className="ease-in-up shadow-btn hover:shadow-btn-hover hidden rounded-sm bg-primary px-8 py-3 text-base font-medium text-white transition duration-300 hover:bg-opacity-90 md:block md:px-9 lg:px-6 xl:px-9"
-                >
-                  Sign Up
-                </Link>
-                <div>
-                  <ThemeToggler />
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {navLinks.map((link) => (
+                <div key={link.name}>
+                  {link.section ? (
+                    <button
+                      onClick={() => scrollToSection(link.section!)}
+                      className={`relative text-base font-medium transition-all duration-300 hover:text-primary ${
+                        isActive(link)
+                          ? "text-primary"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {link.name}
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 w-full transform transition-all duration-300 ${
+                          isActive(link) ? "scale-x-100 bg-primary" : "scale-x-0 bg-primary"
+                        }`}
+                      />
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={`relative text-base font-medium transition-all duration-300 hover:text-primary ${
+                        isActive(link)
+                          ? "text-primary"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      {link.name}
+                      <span
+                        className={`absolute bottom-0 left-0 h-0.5 w-full transform transition-all duration-300 ${
+                          isActive(link) ? "scale-x-100 bg-primary" : "scale-x-0 bg-primary"
+                        }`}
+                      />
+                    </Link>
+                  )}
                 </div>
+              ))}
+            </div>
+
+            {/* Desktop CTA Buttons */}
+            <div className="hidden lg:flex items-center space-x-3">
+              <Link
+                href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full bg-primary px-6 py-2.5 text-base font-semibold text-white transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg hover:shadow-primary/25"
+              >
+                📅 Book Free Demo
+              </Link>
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20connect"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-green-500 px-6 py-2.5 text-base font-semibold text-green-500 transition-all duration-300 hover:bg-green-500 hover:text-white"
+              >
+                💬 WhatsApp
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Menu */}
+            <button
+              onClick={() => setNavbarOpen(!navbarOpen)}
+              className="lg:hidden flex items-center justify-center w-10 h-10 text-white"
+              aria-label="Toggle menu"
+            >
+              <div className="relative w-6 h-5">
+                <span
+                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+                    navbarOpen ? "top-2 rotate-45" : "top-0"
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 top-2 ${
+                    navbarOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                <span
+                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+                    navbarOpen ? "top-2 -rotate-45" : "top-4"
+                  }`}
+                />
+              </div>
+            </button>
+          </nav>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden fixed inset-0 z-40 transition-all duration-300 ${
+            navbarOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* Backdrop */}
+          <div
+            className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${
+              navbarOpen ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={() => setNavbarOpen(false)}
+          />
+
+          {/* Menu Panel */}
+          <div
+            className={`absolute right-0 top-0 h-full w-80 max-w-full bg-[#0f172a] shadow-xl transform transition-transform duration-300 ${
+              navbarOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col h-full p-6">
+              {/* Close Button */}
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={() => setNavbarOpen(false)}
+                  className="text-white/60 hover:text-white transition-colors p-2"
+                  aria-label="Close menu"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Mobile Logo */}
+              <div className="mb-8">
+                <Link
+                  href="/"
+                  className="flex items-center text-xl font-bold text-white"
+                  onClick={() => {
+                    scrollToSection("home");
+                    setNavbarOpen(false);
+                  }}
+                >
+                  <span className="text-primary mr-1">&lt;</span>
+                  CodeCEF
+                  <span className="text-primary ml-1">/&gt;</span>
+                </Link>
+              </div>
+
+              {/* Mobile Navigation Links */}
+              <nav className="flex-1">
+                <ul className="space-y-4">
+                  {navLinks.map((link) => (
+                    <li key={link.name}>
+                      {link.section ? (
+                        <button
+                          onClick={() => scrollToSection(link.section!)}
+                          className={`block w-full text-left text-lg font-medium transition-colors hover:text-primary ${
+                            isActive(link) ? "text-primary" : "text-gray-300"
+                          }`}
+                        >
+                          {link.name}
+                        </button>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          className={`block text-lg font-medium transition-colors hover:text-primary ${
+                            isActive(link) ? "text-primary" : "text-gray-300"
+                          }`}
+                          onClick={() => setNavbarOpen(false)}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Mobile CTA Buttons */}
+              <div className="space-y-3 mt-8">
+                <Link
+                  href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full rounded-full bg-primary px-6 py-3 text-center text-base font-semibold text-white transition-all duration-300 hover:bg-opacity-90"
+                  onClick={() => setNavbarOpen(false)}
+                >
+                  📅 Book Free Demo
+                </Link>
+                <Link
+                  href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20connect"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full rounded-full border border-green-500 px-6 py-3 text-center text-base font-semibold text-green-500 transition-all duration-300 hover:bg-green-500 hover:text-white"
+                  onClick={() => setNavbarOpen(false)}
+                >
+                  💬 WhatsApp
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </header>
+
+      {/* Add padding to body to account for fixed header */}
+      <div className="h-16 md:h-20" />
     </>
   );
 };
