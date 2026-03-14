@@ -49,7 +49,7 @@ const Hero = () => {
                     💬 Chat on WhatsApp
                   </Link>
                   <Link
-                    href="https://www.linkedin.com/company/codecef/?viewAsMember=true"
+                    href="https://www.linkedin.com/in/ahmad-raza-8b496b1b0"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="rounded-sm border-2 border-[#0077b5] px-6 py-3 text-base font-semibold text-[#0077b5] bg-transparent duration-300 ease-in-out hover:bg-[#0077b5] hover:text-white transform hover:scale-105 transition-all"
@@ -59,7 +59,7 @@ const Hero = () => {
                 </div>
 
                 <p className="mt-4 text-center text-sm text-body-color dark:text-body-color-dark sm:text-left lg:text-sm">
-                  � Video call · 💬 Chat first · 🔗 Let's connect
+                  📅 Video call · 💬 Chat first · 🔗 Let&apos;s connect
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:justify-start">

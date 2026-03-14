@@ -1,4 +1,5 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import Header from "@/components/Header";
 
 import { Metadata } from "next";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 const AboutPage = () => {
   return (
     <>
+      <Header />
       <Breadcrumb
         pageName="About CodeCEF"
         description=""
