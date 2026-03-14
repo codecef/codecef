@@ -7,7 +7,7 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  category: string;
+  categories: string[];
   techStack: string[];
   clientOrigin: "indian" | "foreign";
   liveUrl: string;
@@ -23,7 +23,7 @@ const projects: Project[] = [
     id: "1",
     title: "Siloq – SEO Architecture Platform",
     description: "AI-powered SaaS that automatically fixes website SEO structure and prevents keyword cannibalization",
-    category: "Web Apps",
+    categories: ["Web Apps", "SaaS"],
     techStack: ["Next.js", "Django", "Stripe", "PostgreSQL", "Tailwind CSS"],
     clientOrigin: "foreign",
     liveUrl: "https://siloq.ai/",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     id: "2",
     title: "TayAI – Academy AI Chatbot",
     description: "RAG-powered AI assistant for Tay's Luxe Academy handling student queries, course guidance and business support 24/7",
-    category: "Web Apps",
+    categories: ["Web Apps", "SaaS"],
     techStack: ["React", "FastAPI", "MySQL", "RAG AI Integration"],
     clientOrigin: "foreign",
     liveUrl: "https://ai.taysluxeacademy.com/",
@@ -48,7 +48,7 @@ const projects: Project[] = [
     id: "3",
     title: "VICIdial SMS Automation",
     description: "Custom SMS integration for VICIdial call center — auto-sends messages on Press 1 triggers and call dispositions",
-    category: "Web Apps",
+    categories: ["Web Apps", "Custom Software"],
     techStack: ["VICIdial", "PHP", "SMS Gateway API", "MySQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.vicidial.com/",
@@ -60,7 +60,7 @@ const projects: Project[] = [
     id: "4",
     title: "Tlinikah – Matrimonial Platform",
     description: "Full-featured matrimonial web app for Muslim marriage matching with advanced profile search and secure messaging",
-    category: "Web Apps",
+    categories: ["Web Apps"],
     techStack: ["Next.js", "Django", "MySQL", "AWS"],
     clientOrigin: "foreign",
     liveUrl: "https://tlinikah.com/",
@@ -72,7 +72,7 @@ const projects: Project[] = [
     id: "5",
     title: "JSON Formatters – Dev Tools Platform",
     description: "Multi-tool online platform for developers with JSON formatter, validator and essential web utilities",
-    category: "Web Apps",
+    categories: ["Web Apps"],
     techStack: ["Next.js", "AWS", "Prisma", "Mux"],
     clientOrigin: "foreign",
     liveUrl: "https://jsonformatters.online/",
@@ -84,7 +84,7 @@ const projects: Project[] = [
     id: "6",
     title: "Decimal – Finance & Bookkeeping SaaS",
     description: "Full-featured bookkeeping and accounting platform covering bill pay, tax, invoicing, payroll and financial reporting",
-    category: "Web Apps",
+    categories: ["Web Apps", "SaaS"],
     techStack: ["Angular", "Spring Boot", "PostgreSQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.decimal.com/",
@@ -105,8 +105,7 @@ const Portfolio = () => {
 
   const filteredProjects = projects.filter(project => {
     if (selectedCategory === "All") return true;
-    if (selectedCategory === "Foreign Projects") return project.clientOrigin === "foreign";
-    return project.category === selectedCategory;
+    return project.categories.includes(selectedCategory);
   });
 
   // Reset to page 1 when category changes
