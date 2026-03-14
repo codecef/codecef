@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface Project {
@@ -99,6 +99,8 @@ const categories = ["All", "Web Apps", "Mobile Apps", "E-commerce", "SaaS", "For
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 3;
 
   const filteredProjects = projects.filter(project => {
     if (selectedCategory === "All") return true;
@@ -106,8 +108,18 @@ const Portfolio = () => {
     return project.category === selectedCategory;
   });
 
-  const featuredProject = projects.find(p => p.featured);
-  const regularProjects = filteredProjects.filter(p => !p.featured);
+  // Reset to page 1 when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
+
+  // Calculate pagination
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -150,68 +162,9 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Featured Project */}
-          {featuredProject && selectedCategory === "All" && (
-            <div className="mb-12 rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-dark lg:p-12">
-              <div className="flex flex-col items-center gap-8 lg:flex-row">
-                <div className="w-full lg:w-1/2">
-                  <div className="relative h-64 w-full overflow-hidden rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 dark:from-primary/10 dark:to-primary/5 lg:h-80">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-primary/50">Project Preview</span>
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="rounded-full bg-white px-3 py-1 text-xs font-medium shadow-lg dark:bg-gray-dark">
-                        {featuredProject.clientOrigin === "foreign" ? "🌍 Foreign Client" : "🇮🇳 Indian Client"}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full lg:w-1/2">
-                  <div className="mb-4">
-                    <span className="rounded-sm bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      Featured Project
-                    </span>
-                  </div>
-                  <h3 className="mb-3 text-2xl font-bold text-black dark:text-white lg:text-3xl">
-                    {featuredProject.title}
-                  </h3>
-                  <p className="mb-4 text-body-color dark:text-body-color-dark">
-                    {featuredProject.description}
-                  </p>
-                  <div className="mb-6 flex flex-wrap gap-2">
-                    {featuredProject.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-sm bg-gray-100 px-3 py-1 text-xs font-medium text-body-color dark:bg-gray-800 dark:text-body-color-dark"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex flex-col gap-3 sm:flex-row">
-                    <Link
-                      href={featuredProject.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="rounded-sm bg-primary px-6 py-3 text-center text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/90"
-                    >
-                      🔗 Live Site
-                    </Link>
-                    <button
-                      onClick={() => setSelectedProject(featuredProject)}
-                      className="rounded-sm border border-primary bg-transparent px-6 py-3 text-center text-base font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white"
-                    >
-                      Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Regular Projects Grid */}
+          {/* Projects Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {regularProjects.map((project) => (
+            {currentProjects.map((project) => (
               <div
                 key={project.id}
                 className="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-dark"
@@ -268,6 +221,54 @@ const Portfolio = () => {
               </div>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-12 flex justify-center">
+              <div className="flex items-center space-x-2">
+                {/* Previous Button */}
+                <button
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    currentPage === 1
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800"
+                      : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                  }`}
+                >
+                  ← Previous
+                </button>
+
+                {/* Page Numbers */}
+                {[...Array(totalPages)].map((_, index) => (
+                  <button
+                    key={index + 1}
+                    onClick={() => paginate(index + 1)}
+                    className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                      currentPage === index + 1
+                        ? "bg-primary text-white"
+                        : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+
+                {/* Next Button */}
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                    currentPage === totalPages
+                      ? "bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800"
+                      : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                  }`}
+                >
+                  Next →
+                </button>
+              </div>
+            </div>
+          )}
 
           {/* Client Countries Strip */}
           <div className="mt-16 rounded-lg bg-gray-50 p-6 text-center dark:bg-gray-800">

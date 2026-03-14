@@ -1,228 +1,340 @@
-import SectionTitle from "../Common/SectionTitle";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Pricing = () => {
-  return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
-      <div className="container">
-        <SectionTitle
-          title="Simple & Transparent Pricing"
-          paragraph="Flexible pricing tailored for Indian startups, businesses, and founders. Choose a plan or contact us for custom solutions."
-          center
-          width="700px"
-        />
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cardId = parseInt(entry.target.getAttribute("data-card-id") || "0");
+            setVisibleCards((prev) => [...prev, cardId]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const cards = document.querySelectorAll("[data-card-id]");
+    cards.forEach((card) => observer.observe(card));
+
+    return () => {
+      cards.forEach((card) => observer.unobserve(card));
+    };
+  }, []);
+
+  return (
+    <section id="pricing" className="relative z-10 py-16 bg-gray-50 dark:bg-gray-900 md:py-20 lg:py-28">
+      <div className="container">
+        {/* Section Header */}
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
+            Simple & Transparent Pricing
+          </h2>
+          <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            No hidden charges. No surprises. Pick a plan or let&apos;s build something custom.
+          </p>
+        </div>
+
+        {/* Pricing Cards */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-black dark:text-white">
-                  Static Website &amp; Design
-                </h3>
-                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
-                  Perfect for individuals, startups, and small businesses looking for a professional online presence.
-                </p>
-              </div>
-              <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/10">
+          {/* Card 1 - Static Website */}
+          <div
+            data-card-id={1}
+            className={`relative rounded-xl bg-white p-8 shadow-sm transition-all duration-700 hover:shadow-lg hover:-translate-y-1 dark:bg-gray-dark dark:border-gray-800 ${
+              visibleCards.includes(1) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            {/* Badge */}
+            <div className="absolute -top-3 left-6">
+              <span className="inline-flex items-center rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-white">
                 🔥 Limited Offer
               </span>
             </div>
 
+            {/* Content */}
             <div className="mb-6">
-              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
-                Offer Price
-              </div>
-              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
+              <h3 className="mb-3 text-xl font-bold text-black dark:text-white">
+                Static Website & Design
+              </h3>
+              <p className="text-sm text-body-color dark:text-body-color-dark">
+                Perfect for individuals, startups & small businesses wanting a professional online presence
+              </p>
+            </div>
+
+            {/* Price */}
+            <div className="mb-6">
+              <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                 ₹5,000 – ₹25,000
               </div>
-              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+              <div className="text-sm text-gray-500 dark:text-gray-400">
                 <span className="line-through">₹15,000 – ₹40,000</span>
               </div>
             </div>
 
-            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
-              <li>Up to 15 pages</li>
-              <li>Responsive design</li>
-              <li>Modern UI</li>
-              <li>Contact form</li>
-              <li>Basic SEO setup</li>
-              <li>Fast delivery</li>
+            {/* Features */}
+            <ul className="mb-8 space-y-3 text-sm text-body-color dark:text-body-color-dark">
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Up to 15 pages
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Responsive design
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Modern UI
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Contact form
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Basic SEO setup
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Fast delivery
+              </li>
             </ul>
 
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/contact"
-                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+            {/* Buttons */}
+            <div className="space-y-3">
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27m%20interested%20in%20Static%20Website%20package"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-blue-700"
               >
-                Contact Now
-              </a>
-              <a
-                href="/contact"
-                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+                💬 WhatsApp Us
+              </Link>
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20need%20a%20quote%20for%20Static%20Website"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg border border-gray-300 bg-transparent px-6 py-3 text-center text-base font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
               >
                 Get Quote
-              </a>
+              </Link>
             </div>
           </div>
 
-          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-black dark:text-white">
-                  Dynamic Website &amp; Database Systems
-                </h3>
-                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
-                  Best for businesses that need login systems, admin panels, databases, and dynamic features.
-                </p>
-              </div>
-              <span className="inline-flex items-center rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/10">
+          {/* Card 2 - Dynamic Website (Most Popular) */}
+          <div
+            data-card-id={2}
+            className={`relative rounded-xl border-2 border-blue-500 bg-gray-900 p-8 shadow-lg transition-all duration-700 hover:shadow-xl hover:-translate-y-1 dark:bg-gray-dark ${
+              visibleCards.includes(2) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+            style={{ boxShadow: "0 0 30px rgba(79,142,247,0.25)" }}
+          >
+            {/* Badge */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-1 text-xs font-semibold text-white">
+                ⭐ Most Popular
+              </span>
+            </div>
+
+            {/* Top-right badge */}
+            <div className="absolute -top-3 right-6">
+              <span className="inline-flex items-center rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold text-white">
                 🔥 Limited Offer
               </span>
             </div>
 
+            {/* Content */}
             <div className="mb-6">
-              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
-                Offer Price
-              </div>
-              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
+              <h3 className="mb-3 text-xl font-bold text-white">
+                Dynamic Website & Database Systems
+              </h3>
+              <p className="text-sm text-gray-300">
+                Best for businesses needing login systems, admin panels, databases & dynamic features
+              </p>
+            </div>
+
+            {/* Price */}
+            <div className="mb-6">
+              <div className="text-2xl font-bold text-white">
                 ₹25,000 – ₹70,000
               </div>
-              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+              <div className="text-sm text-gray-400">
                 <span className="line-through">₹40,000 – ₹99,000</span>
               </div>
             </div>
 
-            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
-              <li>Backend + database integration</li>
-              <li>Admin dashboard</li>
-              <li>Authentication system</li>
-              <li>API integration</li>
-              <li>Scalable architecture</li>
-              <li>Deployment support</li>
+            {/* Features */}
+            <ul className="mb-8 space-y-3 text-sm text-gray-300">
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                Backend + database integration
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                Admin dashboard
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                Authentication system
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                API integration
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                Scalable architecture
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-400">✅</span>
+                Deployment support
+              </li>
             </ul>
 
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/contact"
-                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+            {/* Buttons */}
+            <div className="space-y-3">
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%27m%20interested%20in%20Dynamic%20Website%20package"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-blue-700"
               >
-                Contact Now
-              </a>
-              <a
-                href="/contact"
-                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+                💬 WhatsApp Us
+              </Link>
+              <Link
+                href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg border border-white/20 bg-transparent px-6 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-white/10"
               >
-                Discuss Project
-              </a>
+                📅 Book Free Demo
+              </Link>
             </div>
           </div>
 
-          <div className="relative z-10 rounded-sm bg-white px-8 py-10 shadow-three hover:shadow-one dark:bg-gray-dark dark:shadow-two dark:hover:shadow-gray-dark">
-            <div className="mb-4 flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-black dark:text-white">
-                  Custom Software &amp; MVP Development
-                </h3>
-                <p className="mt-2 text-sm text-body-color dark:text-body-color-dark">
-                  Tailored solutions for startups, SaaS products, and businesses with unique requirements.
-                </p>
-              </div>
-              <span className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-600 dark:bg-blue-500/10">
-                Custom Pricing
+          {/* Card 3 - Custom Software */}
+          <div
+            data-card-id={3}
+            className={`relative rounded-xl bg-white p-8 shadow-sm transition-all duration-700 hover:shadow-lg hover:-translate-y-1 dark:bg-gray-dark dark:border-gray-800 ${
+              visibleCards.includes(3) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
+          >
+            {/* Badge */}
+            <div className="absolute -top-3 left-6">
+              <span className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-500 to-purple-600 px-3 py-1 text-xs font-semibold text-white">
+                🚀 Enterprise
               </span>
             </div>
 
+            {/* Content */}
             <div className="mb-6">
-              <div className="text-xs font-medium uppercase tracking-wide text-body-color dark:text-body-color-dark">
-                Pricing
+              <h3 className="mb-3 text-xl font-bold text-black dark:text-white">
+                Custom Software & MVP Development
+              </h3>
+              <p className="text-sm text-body-color dark:text-body-color-dark">
+                Tailored solutions for startups, SaaS products and businesses with unique requirements
+              </p>
+            </div>
+
+            {/* Price */}
+            <div className="mb-6">
+              <div className="text-2xl font-bold text-black dark:text-white">
+                Custom Pricing
               </div>
-              <div className="mt-1 text-2xl font-bold text-black dark:text-white">
-                Custom pricing
-              </div>
-              <div className="mt-1 text-sm text-body-color dark:text-body-color-dark">
+              <div className="text-sm text-body-color dark:text-body-color-dark">
                 Based on project scope and complexity
+              </div>
+              <div className="text-sm text-blue-600 dark:text-blue-400">
+                Starting from ₹70,000
               </div>
             </div>
 
-            <ul className="mb-8 space-y-2 text-sm text-body-color dark:text-body-color-dark">
-              <li>MVP development</li>
-              <li>SaaS platforms</li>
-              <li>Custom dashboards</li>
-              <li>Automation systems</li>
-              <li>API &amp; cloud architecture</li>
-              <li>Long-term scalability planning</li>
+            {/* Features */}
+            <ul className="mb-8 space-y-3 text-sm text-body-color dark:text-body-color-dark">
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                MVP development
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                SaaS platforms
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Custom dashboards
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Automation systems
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                API & cloud architecture
+              </li>
+              <li className="flex items-center">
+                <span className="mr-2 text-green-500">✅</span>
+                Long-term scalability planning
+              </li>
             </ul>
 
-            <div className="flex flex-wrap gap-3">
-              <a
-                href="/contact"
-                className="rounded-sm bg-primary px-6 py-3 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+            {/* Buttons */}
+            <div className="space-y-3">
+              <Link
+                href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20discuss%20a%20Custom%20Software%20project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg bg-blue-600 px-6 py-3 text-center text-base font-semibold text-white transition-colors hover:bg-blue-700"
               >
-                Contact Now
-              </a>
-              <a
-                href="/contact"
-                className="rounded-sm border border-black/10 px-6 py-3 text-sm font-semibold text-black duration-300 ease-in-out hover:bg-black hover:text-white dark:border-white/20 dark:text-white dark:hover:bg-white/10"
+                💬 Discuss Project
+              </Link>
+              <Link
+                href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full rounded-lg border border-gray-300 bg-transparent px-6 py-3 text-center text-base font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
               >
-                Book Consultation
-              </a>
+                📅 Book Consultation
+              </Link>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 z-[-1]">
-        <svg
-          width="239"
-          height="601"
-          viewBox="0 0 239 601"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            opacity="0.3"
-            x="-184.451"
-            y="600.973"
-            width="196"
-            height="541.607"
-            rx="2"
-            transform="rotate(-128.7 -184.451 600.973)"
-            fill="url(#paint0_linear_93:235)"
-          />
-          <rect
-            opacity="0.3"
-            x="-188.201"
-            y="385.272"
-            width="59.7544"
-            height="541.607"
-            rx="2"
-            transform="rotate(-128.7 -188.201 385.272)"
-            fill="url(#paint1_linear_93:235)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_93:235"
-              x1="-90.1184"
-              y1="420.414"
-              x2="-90.1184"
-              y2="1131.65"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_93:235"
-              x1="-159.441"
-              y1="204.714"
-              x2="-159.441"
-              y2="915.952"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
+        {/* Reassurance Strip */}
+        <div className="mt-12 rounded-lg bg-white p-6 text-center shadow-sm dark:bg-gray-dark">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-body-color dark:text-body-color-dark sm:gap-8">
+            <span className="flex items-center">
+              🔒 Secure Payment
+            </span>
+            <span className="flex items-center">
+              📋 Signed Contract
+            </span>
+            <span className="flex items-center">
+              🔄 Free Revisions
+            </span>
+            <span className="flex items-center">
+              ✅ On-Time Delivery
+            </span>
+          </div>
+        </div>
+
+        {/* Final CTA */}
+        <div className="mt-8 text-center">
+          <p className="mb-4 text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            Not sure which plan fits you? Let&apos;s talk — it&apos;s free.
+          </p>
+          <Link
+            href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20need%20help%20choosing%20the%20right%20plan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-blue-700"
+          >
+            💬 WhatsApp to Discuss
+          </Link>
+        </div>
       </div>
     </section>
   );
