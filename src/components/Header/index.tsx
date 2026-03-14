@@ -10,6 +10,8 @@ const Header = () => {
 
   // Sticky Navbar with glass effect
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const handleStickyNavbar = () => {
       if (window.scrollY >= 80) {
         setSticky(true);
@@ -24,6 +26,8 @@ const Header = () => {
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
+    if (typeof window === 'undefined') return;
+    
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -36,10 +40,11 @@ const Header = () => {
     { name: "Services", href: "/#features", section: "features" },
     { name: "Portfolio", href: "/#portfolio", section: "portfolio" },
     { name: "About", href: "/about", section: null },
-    { name: "Support", href: "/contact", section: null },
   ];
 
   const isActive = (link: any) => {
+    if (typeof window === 'undefined') return false;
+    
     if (link.section) {
       return pathname === "/" && window.scrollY < 200 && link.section === "home";
     }
@@ -51,17 +56,21 @@ const Header = () => {
       <header
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
           sticky
-            ? "bg-[#0f172a]/90 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
+            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200"
+            : "bg-black/50 backdrop-blur-sm"
         }`}
       >
+        {/* Glowing blue line at bottom */}
+        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse"></div>
         <div className="container">
           <nav className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
             <div className="flex items-center">
               <Link
                 href="/"
-                className="flex items-center text-xl font-bold text-white transition-colors hover:text-primary"
+                className={`flex items-center text-xl font-bold transition-all duration-300 hover:text-primary hover:drop-shadow-[0_0_8px_rgba(74,108,247,0.5)] ${
+                  sticky ? "text-black" : "text-white"
+                }`}
                 onClick={() => scrollToSection("home")}
               >
                 <span className="text-primary mr-1">&lt;</span>
@@ -80,7 +89,7 @@ const Header = () => {
                       className={`relative text-base font-medium transition-all duration-300 hover:text-primary ${
                         isActive(link)
                           ? "text-primary"
-                          : "text-gray-300 hover:text-white"
+                          : sticky ? "text-gray-700" : "text-gray-200"
                       }`}
                     >
                       {link.name}
@@ -96,7 +105,7 @@ const Header = () => {
                       className={`relative text-base font-medium transition-all duration-300 hover:text-primary ${
                         isActive(link)
                           ? "text-primary"
-                          : "text-gray-300 hover:text-white"
+                          : sticky ? "text-gray-700" : "text-gray-200"
                       }`}
                     >
                       {link.name}
@@ -125,8 +134,12 @@ const Header = () => {
                 href="https://wa.me/917470668602?text=Hi%20CodeCEF%2C%20I%20want%20to%20connect"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-green-500 px-6 py-2.5 text-base font-semibold text-green-500 transition-all duration-300 hover:bg-green-500 hover:text-white"
+                className="rounded-full border border-green-500 px-6 py-2.5 text-base font-semibold text-green-500 transition-all duration-300 hover:bg-green-500 hover:text-white flex items-center gap-2"
               >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
                 💬 WhatsApp
               </Link>
             </div>
@@ -134,24 +147,26 @@ const Header = () => {
             {/* Mobile Hamburger Menu */}
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className="lg:hidden flex items-center justify-center w-10 h-10 text-white"
+              className={`lg:hidden flex items-center justify-center w-10 h-10 transition-colors ${
+                sticky ? "text-black" : "text-white"
+              }`}
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-5">
                 <span
-                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 ${
                     navbarOpen ? "top-2 rotate-45" : "top-0"
-                  }`}
+                  } ${sticky ? "bg-black" : "bg-white"}`}
                 />
                 <span
-                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 top-2 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 top-2 ${
                     navbarOpen ? "opacity-0" : "opacity-100"
-                  }`}
+                  } ${sticky ? "bg-black" : "bg-white"}`}
                 />
                 <span
-                  className={`absolute h-0.5 w-6 bg-white transition-all duration-300 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 ${
                     navbarOpen ? "top-2 -rotate-45" : "top-4"
-                  }`}
+                  } ${sticky ? "bg-black" : "bg-white"}`}
                 />
               </div>
             </button>
@@ -219,7 +234,7 @@ const Header = () => {
                         <button
                           onClick={() => scrollToSection(link.section!)}
                           className={`block w-full text-left text-lg font-medium transition-colors hover:text-primary ${
-                            isActive(link) ? "text-primary" : "text-gray-300"
+                            isActive(link) ? "text-primary" : "text-gray-200"
                           }`}
                         >
                           {link.name}
@@ -228,7 +243,7 @@ const Header = () => {
                         <Link
                           href={link.href}
                           className={`block text-lg font-medium transition-colors hover:text-primary ${
-                            isActive(link) ? "text-primary" : "text-gray-300"
+                            isActive(link) ? "text-primary" : "text-gray-200"
                           }`}
                           onClick={() => setNavbarOpen(false)}
                         >
