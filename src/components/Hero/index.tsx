@@ -111,7 +111,7 @@ const Hero = () => {
                             </svg>
                           </div>
                           <div className="text-left">
-                            <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">📅 Book a Google Meet</p>
+                            <p className="text-sm font-semibold text-black dark:text-white lg:text-xs">📅 Book Free Google Meet</p>
                             <p className="text-xs text-body-color dark:text-body-color-dark">30 min · Free · Video call</p>
                           </div>
                         </div>
