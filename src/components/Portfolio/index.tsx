@@ -91,7 +91,19 @@ const projects: Project[] = [
     problem: "Businesses were struggling with manual bookkeeping, scattered financial data and slow month-end closing",
     solution: "Built a comprehensive finance platform covering bookkeeping, tax, bill pay, expense management, invoicing, payroll and financial reporting",
     result: "Clients close books 35% faster, saving 10+ hours per week on accounting tasks"
-  }
+  },
+  {
+  id: "7",
+  title: "MicCheck – Open Mic Comedy Booking Platform",
+  description: "Platform for comedians to register, book open mic slots and perform live stand-up comedy shows",
+  categories: ["Web Apps", "Event Platforms"],
+  techStack: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
+  clientOrigin: "indian",
+  liveUrl: "https://www.micheck123.com/",
+  problem: "Aspiring comedians had no simple platform to find open mic shows and book performance slots easily",
+  solution: "Built a booking platform where performers can register, reserve stage time, manage show slots and pay online to secure their spot",
+  result: "Streamlined open mic bookings with a simple performer registration system and organized show scheduling"
+}
 ];
 
 
