@@ -100,13 +100,13 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-9">
+            <div className="hidden md:flex items-center space-x-4 lg:space-x-9">
               {navLinks.map((link) => (
                 <div key={link.name}>
                   {link.section ? (
                     <button
                       onClick={() => handleNavigation(link)}
-                      className={`relative text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
+                      className={`relative text-[13px] md:text-[14px] lg:text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
                         isActive(link)
                           ? sticky ? "text-white" : "text-black"
                           : sticky ? "text-[#cbd5e1]" : "text-black"
@@ -122,7 +122,7 @@ const Header = () => {
                   ) : (
                     <Link
                       href={link.href}
-                      className={`relative text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
+                      className={`relative text-[13px] md:text-[14px] lg:text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
                         isActive(link)
                           ? sticky ? "text-white" : "text-black"
                           : sticky ? "text-[#cbd5e1]" : "text-black"
