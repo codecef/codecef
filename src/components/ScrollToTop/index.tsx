@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const isMounted = useRef(true);
 
   // Top: 0 takes us all the way back to the top of the page
   // Behavior: smooth keeps it smooth!
@@ -13,8 +14,15 @@ export default function ScrollToTop() {
   };
 
   useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  useEffect(() => {
     // Button is displayed after scrolling for 500 pixels
     const toggleVisibility = () => {
+      if (!isMounted.current) return;
       if (window.pageYOffset > 300) {
         setIsVisible(true);
       } else {

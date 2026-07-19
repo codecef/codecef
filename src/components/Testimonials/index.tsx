@@ -1,10 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Testimonials = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const testimonials = [
     {
@@ -73,7 +80,7 @@ const Testimonials = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && isMounted.current) {
             const cardId = parseInt(entry.target.getAttribute("data-card-id") || "0");
             setVisibleCards((prev) => [...prev, cardId]);
           }
@@ -86,7 +93,7 @@ const Testimonials = () => {
     cards.forEach((card) => observer.observe(card));
 
     return () => {
-      cards.forEach((card) => observer.unobserve(card));
+      observer.disconnect();
     };
   }, []);
 

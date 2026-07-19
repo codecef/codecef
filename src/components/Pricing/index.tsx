@@ -23,7 +23,7 @@ const Pricing = () => {
     cards.forEach((card) => observer.observe(card));
 
     return () => {
-      cards.forEach((card) => observer.unobserve(card));
+      observer.disconnect();
     };
   }, []);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 interface Project {
@@ -23,7 +23,7 @@ const projects: Project[] = [
     id: "1",
     title: "Siloq – SEO Architecture Platform",
     description: "AI-powered SaaS that automatically fixes website SEO structure and prevents keyword cannibalization",
-    categories: ["Web Apps", "SaaS"],
+    categories: ["AI SaaS"],
     techStack: ["Next.js", "Django", "Stripe", "PostgreSQL", "Tailwind CSS"],
     clientOrigin: "foreign",
     liveUrl: "https://siloq.ai/",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     id: "2",
     title: "TayAI – Academy AI Chatbot",
     description: "RAG-powered AI assistant for Tay's Luxe Academy handling student queries, course guidance and business support 24/7",
-    categories: ["Web Apps", "SaaS"],
+    categories: ["AI SaaS"],
     techStack: ["React", "FastAPI", "MySQL", "RAG AI Integration"],
     clientOrigin: "foreign",
     liveUrl: "https://ai.taysluxeacademy.com/",
@@ -48,7 +48,7 @@ const projects: Project[] = [
     id: "3",
     title: "VICIdial SMS Automation",
     description: "Custom SMS integration for VICIdial call center — auto-sends messages on Press 1 triggers and call dispositions",
-    categories: ["Web Apps", "Custom Software"],
+    categories: ["AI Automation"],
     techStack: ["VICIdial", "PHP", "SMS Gateway API", "MySQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.vicidial.com/",
@@ -60,7 +60,7 @@ const projects: Project[] = [
     id: "4",
     title: "Tlinikah – Matrimonial Platform",
     description: "Full-featured matrimonial web app for Muslim marriage matching with advanced profile search and secure messaging",
-    categories: ["Web Apps"],
+    categories: ["Enterprise Software"],
     techStack: ["Next.js", "Django", "MySQL", "AWS"],
     clientOrigin: "foreign",
     liveUrl: "https://tlinikah.com/",
@@ -72,7 +72,7 @@ const projects: Project[] = [
     id: "5",
     title: "JSON Formatters – Dev Tools Platform",
     description: "Multi-tool online platform for developers with JSON formatter, validator and essential web utilities",
-    categories: ["Web Apps"],
+    categories: ["Enterprise Software"],
     techStack: ["Next.js", "AWS", "Prisma", "Mux"],
     clientOrigin: "foreign",
     liveUrl: "https://jsonformatters.online/",
@@ -84,7 +84,7 @@ const projects: Project[] = [
     id: "6",
     title: "Decimal – Finance & Bookkeeping SaaS",
     description: "Full-featured bookkeeping and accounting platform covering bill pay, tax, invoicing, payroll and financial reporting",
-    categories: ["Web Apps", "SaaS"],
+    categories: ["AI SaaS"],
     techStack: ["Angular", "Spring Boot", "PostgreSQL"],
     clientOrigin: "indian",
     liveUrl: "https://www.decimal.com/",
@@ -96,7 +96,7 @@ const projects: Project[] = [
   id: "7",
   title: "MicCheck – Open Mic Comedy Booking Platform",
   description: "Platform for comedians to register, book open mic slots and perform live stand-up comedy shows",
-  categories: ["Web Apps", "Event Platforms"],
+  categories: ["Enterprise Software"],
   techStack: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Tailwind CSS"],
   clientOrigin: "indian",
   liveUrl: "https://www.micheck123.com/",
@@ -107,13 +107,20 @@ const projects: Project[] = [
 ];
 
 
-const categories = ["All", "Web Apps", "Mobile Apps", "SaaS", "Custom Software"];
+const categories = ["All", "AI Automation", "AI Agents", "AI SaaS", "Enterprise Software"];
 
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const filteredProjects = projects.filter(project => {
     if (selectedCategory === "All") return true;
@@ -122,8 +129,17 @@ const Portfolio = () => {
 
   // Reset to page 1 when category changes
   useEffect(() => {
-    setCurrentPage(1);
+    if (isMounted.current) {
+      setCurrentPage(1);
+    }
   }, [selectedCategory]);
+
+  // Close modal on unmount
+  useEffect(() => {
+    return () => {
+      setSelectedProject(null);
+    };
+  }, []);
 
   // Calculate pagination
   const indexOfLastProject = currentPage * projectsPerPage;
@@ -140,10 +156,10 @@ const Portfolio = () => {
           {/* Section Header */}
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
-              Work That Speaks for Itself
+              Real AI Products. Real Business Impact.
             </h2>
             <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
-              Projects delivered for clients across India and internationally
+              AI-powered products, automation platforms, SaaS applications, and enterprise software delivered for startups and businesses worldwide.
             </p>
           </div>
 
