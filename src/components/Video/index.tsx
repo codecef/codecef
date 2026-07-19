@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Video = () => {
   const [visibleStats, setVisibleStats] = useState(false);
@@ -12,12 +12,32 @@ const Video = () => {
     faster: 0,
     weeks: 0
   });
+  const timersRef = useRef<{ [key: string]: ReturnType<typeof setInterval> | null }>({
+    projects: null,
+    requests: null,
+    faster: null,
+    weeks: null
+  });
+  const timeoutRefs = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const hasAnimatedStats = useRef(false);
+  const visibleStepsRef = useRef<number[]>([]);
+
+  // Cleanup all timers and timeouts on unmount
+  useEffect(() => {
+    return () => {
+      Object.values(timersRef.current).forEach((timer) => {
+        if (timer) clearInterval(timer);
+      });
+      timeoutRefs.current.forEach(timeout => clearTimeout(timeout));
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !visibleStats) {
+          if (entry.isIntersecting && !hasAnimatedStats.current) {
+            hasAnimatedStats.current = true;
             setVisibleStats(true);
             // Start counter animations
             animateCounter('projects', 20, 1500);
@@ -25,13 +45,15 @@ const Video = () => {
             animateCounter('faster', 80, 1800);
             animateCounter('weeks', 3, 1200);
           }
-          
+
           if (entry.isIntersecting) {
             const stepId = parseInt(entry.target.getAttribute("data-step-id") || "0");
-            if (stepId && !visibleSteps.includes(stepId)) {
-              setTimeout(() => {
+            if (stepId && !visibleStepsRef.current.includes(stepId)) {
+              visibleStepsRef.current.push(stepId);
+              const timeout = setTimeout(() => {
                 setVisibleSteps((prev) => [...prev, stepId]);
               }, stepId * 200);
+              timeoutRefs.current.push(timeout);
             }
           }
         });
@@ -48,10 +70,9 @@ const Video = () => {
     steps.forEach((step) => observer.observe(step));
 
     return () => {
-      if (statsSection) observer.unobserve(statsSection);
-      steps.forEach((step) => observer.unobserve(step));
+      observer.disconnect();
     };
-  }, [visibleStats, visibleSteps]);
+  }, []);
 
   const animateCounter = (key: keyof typeof counters, target: number, duration: number) => {
     let start = 0;
@@ -62,9 +83,12 @@ const Video = () => {
       if (start >= target) {
         start = target;
         clearInterval(timer);
+        timersRef.current[key] = null;
       }
       setCounters(prev => ({ ...prev, [key]: Math.floor(start) }));
     }, 16);
+    
+    timersRef.current[key] = timer;
   };
 
   const steps = [

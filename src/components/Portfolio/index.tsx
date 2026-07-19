@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 interface Project {
@@ -114,13 +114,6 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 3;
-  const isMounted = useRef(true);
-
-  useEffect(() => {
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
 
   const filteredProjects = projects.filter(project => {
     if (selectedCategory === "All") return true;
@@ -129,17 +122,8 @@ const Portfolio = () => {
 
   // Reset to page 1 when category changes
   useEffect(() => {
-    if (isMounted.current) {
-      setCurrentPage(1);
-    }
+    setCurrentPage(1);
   }, [selectedCategory]);
-
-  // Close modal on unmount
-  useEffect(() => {
-    return () => {
-      setSelectedProject(null);
-    };
-  }, []);
 
   // Calculate pagination
   const indexOfLastProject = currentPage * projectsPerPage;

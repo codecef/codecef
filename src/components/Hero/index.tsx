@@ -1,23 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const isMounted = useRef(true);
 
   useEffect(() => {
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isMounted.current) {
-      setIsVisible(true);
-    }
+    setIsVisible(true);
   }, []);
 
   return (

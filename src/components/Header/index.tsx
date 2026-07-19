@@ -1,20 +1,18 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const pathname = usePathname();
-  const isMounted = useRef(true);
 
   // Sticky Navbar with glass effect
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
     const handleStickyNavbar = () => {
-      if (!isMounted.current) return;
       if (window.scrollY >= 80) {
         setSticky(true);
       } else {
@@ -23,10 +21,7 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleStickyNavbar);
-    return () => {
-      isMounted.current = false;
-      window.removeEventListener("scroll", handleStickyNavbar);
-    };
+    return () => window.removeEventListener("scroll", handleStickyNavbar);
   }, []);
 
   // Smooth scroll to section

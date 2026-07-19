@@ -1,17 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const Testimonials = () => {
   const [visibleCards, setVisibleCards] = useState<number[]>([]);
-  const isMounted = useRef(true);
-
-  useEffect(() => {
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
 
   const testimonials = [
     {
@@ -80,7 +73,7 @@ const Testimonials = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && isMounted.current) {
+          if (entry.isIntersecting) {
             const cardId = parseInt(entry.target.getAttribute("data-card-id") || "0");
             setVisibleCards((prev) => [...prev, cardId]);
           }
@@ -115,9 +108,6 @@ const Testimonials = () => {
             <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
               Real feedback from startups and businesses we&apos;ve worked with across India and internationally
             </p>
-          <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
-            Real feedback from startups and businesses we&apos;ve worked with across India and internationally
-          </p>
         </div>
 
         {/* Star Rating Bar */}
