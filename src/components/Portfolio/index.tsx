@@ -135,21 +135,24 @@ const Portfolio = () => {
 
   return (
     <>
-      <section id="portfolio" className="py-16 bg-white dark:bg-gray-dark md:py-20 lg:py-24">
+      <section id="portfolio" className="py-16 bg-gray-900 md:py-20 lg:py-24">
         <div className="container">
           {/* Section Header */}
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
-              Real AI Products. Real Business Impact.
+            <p className="mb-4 text-sm font-semibold tracking-wider text-blue-400">
+              PORTFOLIO
+            </p>
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+              Real AI Products. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Real Business Impact.</span>
             </h2>
-            <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            <p className="mx-auto max-w-[600px] text-base text-gray-400 sm:text-lg">
               AI-powered products, automation platforms, SaaS applications, and enterprise software delivered for startups and businesses worldwide.
             </p>
           </div>
 
           {/* Social Proof Bar */}
-          <div className="mb-12 rounded-lg bg-gray-50 p-6 text-center dark:bg-gray-800">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-body-color dark:text-body-color-dark sm:gap-8 sm:text-base">
+          <div className="mb-12 rounded-lg border border-gray-800 bg-gray-800/50 p-6 text-center backdrop-blur-sm">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-gray-400 sm:gap-8 sm:text-base">
               <span>20+ Projects</span>
               <span>🌍 Foreign Clients</span>
               <span>🇮🇳 Indian Clients</span>
@@ -163,10 +166,10 @@ const Portfolio = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-sm px-4 py-2 text-sm font-medium transition-all duration-300 sm:px-6 sm:text-base ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 sm:px-6 sm:text-base ${
                   selectedCategory === category
-                    ? "bg-primary text-white"
-                    : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                    : "bg-gray-800 text-gray-400 hover:bg-gray-700"
                 }`}
               >
                 {category}
@@ -179,10 +182,10 @@ const Portfolio = () => {
             {currentProjects.map((project) => (
               <div
                 key={project.id}
-                className="rounded-xl bg-white p-6 shadow-lg dark:bg-gray-dark"
+                className="rounded-xl border border-gray-800 bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 shadow-lg backdrop-blur-sm"
               >
                 <div className="mb-4">
-                  <div className="relative h-40 w-full overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+                  <div className="relative h-40 w-full overflow-hidden rounded-lg bg-gray-700">
                     <iframe
                       src={project.liveUrl}
                       title={`${project.title} preview`}
@@ -191,7 +194,7 @@ const Portfolio = () => {
                       sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                     />
                     <div className="absolute top-2 right-2">
-                      <span className="rounded-full bg-white px-2 py-1 text-xs font-medium shadow dark:bg-gray-dark">
+                      <span className="rounded-full bg-gray-900/80 px-2 py-1 text-xs font-medium shadow backdrop-blur-sm">
                         {project.clientOrigin === "foreign" ? "🌍" : "🇮🇳"}
                       </span>
                     </div>
@@ -202,23 +205,23 @@ const Portfolio = () => {
                     </div>
                   </div>
                 </div>
-                <h3 className="mb-2 text-lg font-bold text-black dark:text-white">
+                <h3 className="mb-2 text-lg font-bold text-white">
                   {project.title}
                 </h3>
-                <p className="mb-3 text-sm text-body-color dark:text-body-color-dark">
+                <p className="mb-3 text-sm text-gray-400">
                   {project.description}
                 </p>
                 <div className="mb-4 flex flex-wrap gap-1">
                   {project.techStack.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className="rounded-sm bg-gray-100 px-2 py-1 text-xs font-medium text-body-color dark:bg-gray-800 dark:text-body-color-dark"
+                      className="rounded-sm bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.techStack.length > 3 && (
-                    <span className="rounded-sm bg-gray-100 px-2 py-1 text-xs font-medium text-body-color dark:bg-gray-800 dark:text-body-color-dark">
+                    <span className="rounded-sm bg-gray-700 px-2 py-1 text-xs font-medium text-gray-300">
                       +{project.techStack.length - 3}
                     </span>
                   )}
@@ -228,13 +231,13 @@ const Portfolio = () => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 rounded-sm bg-primary px-3 py-2 text-center text-xs font-semibold text-white duration-300 ease-in-out hover:bg-primary/90"
+                    className="flex-1 rounded-sm bg-gradient-to-r from-blue-600 to-blue-700 px-3 py-2 text-center text-xs font-semibold text-white duration-300 ease-in-out hover:from-blue-500 hover:to-blue-600"
                   >
                     🔗 Live
                   </Link>
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="flex-1 rounded-sm border border-primary bg-transparent px-3 py-2 text-center text-xs font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white"
+                    className="flex-1 rounded-sm border border-blue-500 bg-transparent px-3 py-2 text-center text-xs font-semibold text-blue-400 duration-300 ease-in-out hover:bg-blue-500 hover:text-white"
                   >
                     Details
                   </button>
@@ -253,8 +256,8 @@ const Portfolio = () => {
                   disabled={currentPage === 1}
                   className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                     currentPage === 1
-                      ? "bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800"
-                      : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                      ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                      : "bg-gray-800 text-gray-400 hover:bg-gray-700"
                   }`}
                 >
                   ← Previous
@@ -267,8 +270,8 @@ const Portfolio = () => {
                     onClick={() => paginate(index + 1)}
                     className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                       currentPage === index + 1
-                        ? "bg-primary text-white"
-                        : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+                        : "bg-gray-800 text-gray-400 hover:bg-gray-700"
                     }`}
                   >
                     {index + 1}
@@ -281,8 +284,8 @@ const Portfolio = () => {
                   disabled={currentPage === totalPages}
                   className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                     currentPage === totalPages
-                      ? "bg-gray-100 text-gray-400 cursor-not-allowed dark:bg-gray-800"
-                      : "bg-gray-100 text-body-color hover:bg-gray-200 dark:bg-gray-800 dark:text-body-color-dark dark:hover:bg-gray-700"
+                      ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                      : "bg-gray-800 text-gray-400 hover:bg-gray-700"
                   }`}
                 >
                   Next →
@@ -292,15 +295,15 @@ const Portfolio = () => {
           )}
 
           {/* Client Countries Strip */}
-          <div className="mt-16 rounded-lg bg-gray-50 p-6 text-center dark:bg-gray-800">
-            <p className="text-sm font-medium text-body-color dark:text-body-color-dark sm:text-base">
+          <div className="mt-16 rounded-lg border border-gray-800 bg-gray-800/50 p-6 text-center backdrop-blur-sm">
+            <p className="text-sm font-medium text-gray-400 sm:text-base">
               Clients from: 🇺🇸 USA  🇬🇧 UK  🇦🇺 Australia  🇮🇳 India  🇦🇪 UAE
             </p>
           </div>
 
           {/* Bottom CTA */}
           <div className="mt-12 text-center">
-            <h3 className="mb-6 text-2xl font-bold text-black dark:text-white sm:text-3xl">
+            <h3 className="mb-6 text-2xl font-bold text-white sm:text-3xl">
               Like what you see? Let&apos;s build yours.
             </h3>
             <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -308,7 +311,7 @@ const Portfolio = () => {
                 href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-sm bg-primary px-8 py-4 text-base font-bold text-white duration-300 ease-in-out hover:bg-primary/90 hover:shadow-lg"
+                className="rounded-sm bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-base font-bold text-white duration-300 ease-in-out hover:from-blue-500 hover:to-purple-500 hover:shadow-lg"
               >
                 📅 Book Free Demo
               </Link>
@@ -333,16 +336,16 @@ const Portfolio = () => {
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="max-w-2xl rounded-2xl bg-white p-8 dark:bg-gray-dark"
+            className="max-w-2xl rounded-2xl border border-gray-800 bg-gray-800 p-8 backdrop-blur-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-6 flex items-center justify-between">
-              <h3 className="text-2xl font-bold text-black dark:text-white">
+              <h3 className="text-2xl font-bold text-white">
                 {selectedProject.title}
               </h3>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="rounded-sm p-2 text-body-color hover:bg-gray-100 dark:text-body-color-dark dark:hover:bg-gray-800"
+                className="rounded-sm p-2 text-gray-400 hover:bg-gray-700"
               >
                 <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -352,20 +355,20 @@ const Portfolio = () => {
 
             <div className="mb-6 space-y-4">
               <div>
-                <h4 className="mb-2 font-semibold text-black dark:text-white">Problem</h4>
-                <p className="text-body-color dark:text-body-color-dark">
+                <h4 className="mb-2 font-semibold text-white">Problem</h4>
+                <p className="text-gray-400">
                   {selectedProject.problem}
                 </p>
               </div>
               <div>
-                <h4 className="mb-2 font-semibold text-black dark:text-white">Solution</h4>
-                <p className="text-body-color dark:text-body-color-dark">
+                <h4 className="mb-2 font-semibold text-white">Solution</h4>
+                <p className="text-gray-400">
                   {selectedProject.solution}
                 </p>
               </div>
               <div>
-                <h4 className="mb-2 font-semibold text-black dark:text-white">Result</h4>
-                <p className="text-body-color dark:text-body-color-dark">
+                <h4 className="mb-2 font-semibold text-white">Result</h4>
+                <p className="text-gray-400">
                   {selectedProject.result}
                 </p>
               </div>
@@ -376,13 +379,13 @@ const Portfolio = () => {
                 href={selectedProject.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 rounded-sm bg-primary px-6 py-3 text-center text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/90"
+                className="flex-1 rounded-sm bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-center text-base font-semibold text-white duration-300 ease-in-out hover:from-blue-500 hover:to-blue-600"
               >
                 🔗 Live Site
               </Link>
               <button
                 onClick={() => setSelectedProject(null)}
-                className="flex-1 rounded-sm border border-primary bg-transparent px-6 py-3 text-center text-base font-semibold text-primary duration-300 ease-in-out hover:bg-primary hover:text-white"
+                className="flex-1 rounded-sm border border-blue-500 bg-transparent px-6 py-3 text-center text-base font-semibold text-blue-400 duration-300 ease-in-out hover:bg-blue-500 hover:text-white"
               >
                 Close
               </button>

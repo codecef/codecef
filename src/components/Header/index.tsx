@@ -76,8 +76,8 @@ const Header = () => {
       <header
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
           sticky
-            ? "bg-[#0a0f1e] backdrop-blur-[16px] border-b border-[rgba(79,142,247,0.15)]"
-            : "bg-transparent"
+            ? "bg-gray-900/90 backdrop-blur-[16px] border-b border-[rgba(79,142,247,0.15)]"
+            : "bg-gray-900/80 backdrop-blur-[8px]"
         }`}
       >
         <div className="container">
@@ -86,9 +86,7 @@ const Header = () => {
             <div className="flex items-center">
               <Link
                 href="/"
-                className={`flex items-center text-[22px] font-bold transition-all duration-300 hover:text-[#4f8ef7] hover:drop-shadow-[0_0_20px_rgba(79,142,247,0.5)] ${
-                  sticky ? "text-white" : "text-[#4f8ef7]"
-                }`}
+                className="flex items-center text-[22px] font-bold text-white transition-all duration-300 hover:text-[#4f8ef7] hover:drop-shadow-[0_0_20px_rgba(79,142,247,0.5)]"
                 onClick={() => {
                   handleNavigation({ name: "Home", href: "/", section: "home" });
                 }}
@@ -107,9 +105,7 @@ const Header = () => {
                     <button
                       onClick={() => handleNavigation(link)}
                       className={`relative text-[13px] md:text-[14px] lg:text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
-                        isActive(link)
-                          ? sticky ? "text-white" : "text-black"
-                          : sticky ? "text-[#cbd5e1]" : "text-black"
+                        isActive(link) ? "text-white" : "text-[#cbd5e1]"
                       }`}
                     >
                       {link.name}
@@ -123,9 +119,7 @@ const Header = () => {
                     <Link
                       href={link.href}
                       className={`relative text-[13px] md:text-[14px] lg:text-[15px] font-[400] tracking-[0.3px] transition-all duration-300 hover:text-white ${
-                        isActive(link)
-                          ? sticky ? "text-white" : "text-black"
-                          : sticky ? "text-[#cbd5e1]" : "text-black"
+                        isActive(link) ? "text-white" : "text-[#cbd5e1]"
                       }`}
                     >
                       {link.name}
@@ -175,26 +169,24 @@ const Header = () => {
             {/* Mobile Hamburger Menu */}
             <button
               onClick={() => setNavbarOpen(!navbarOpen)}
-              className={`lg:hidden flex items-center justify-center w-10 h-10 transition-colors ${
-                sticky ? "text-white" : "text-black"
-              }`}
+              className="lg:hidden flex items-center justify-center w-10 h-10 transition-colors text-white"
               aria-label="Toggle menu"
             >
               <div className="relative w-6 h-5">
                 <span
-                  className={`absolute h-0.5 w-6 transition-all duration-300 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 bg-white ${
                     navbarOpen ? "top-2 rotate-45" : "top-0"
-                  } ${sticky ? "bg-white" : "bg-black"}`}
+                  }`}
                 />
                 <span
-                  className={`absolute h-0.5 w-6 transition-all duration-300 top-2 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 top-2 bg-white ${
                     navbarOpen ? "opacity-0" : "opacity-100"
-                  } ${sticky ? "bg-white" : "bg-black"}`}
+                  }`}
                 />
                 <span
-                  className={`absolute h-0.5 w-6 transition-all duration-300 ${
+                  className={`absolute h-0.5 w-6 transition-all duration-300 bg-white ${
                     navbarOpen ? "top-2 -rotate-45" : "top-4"
-                  } ${sticky ? "bg-white" : "bg-black"}`}
+                  }`}
                 />
               </div>
             </button>

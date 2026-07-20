@@ -60,14 +60,17 @@ const Features = () => {
 
   return (
     <>
-      <section id="features" className="py-16 bg-white dark:bg-gray-dark md:py-20 lg:py-28">
+      <section id="features" className="py-16 bg-gray-900 md:py-20 lg:py-28">
         <div className="container">
           {/* Section Header */}
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
-              AI Solutions That Help Businesses Grow
+            <p className="mb-4 text-sm font-semibold tracking-wider text-blue-400">
+              OUR SERVICES
+            </p>
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+              Powerful Solutions. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Real Impact.</span>
             </h2>
-            <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            <p className="mx-auto max-w-[600px] text-base text-gray-400 sm:text-lg">
               From AI automation and intelligent agents to scalable SaaS platforms, we help businesses innovate, automate operations, and accelerate growth.
             </p>
           </div>
@@ -77,27 +80,27 @@ const Features = () => {
             {services.map((service) => (
               <div
                 key={service.id}
-                className="group rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 dark:border-gray-800 dark:bg-gray-dark"
+                className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] hover:-translate-y-1"
               >
                 {/* Icon and Badge */}
                 <div className="mb-4 flex items-start justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary bg-opacity-10 text-2xl">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-2xl">
                     {service.icon}
                   </div>
                   {service.badge && (
-                    <span className="rounded-sm bg-orange-100 px-2 py-1 text-xs font-medium text-orange-600 dark:bg-orange-900/20 dark:text-orange-400">
+                    <span className="rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 px-2 py-1 text-xs font-medium text-white">
                       {service.badge}
                     </span>
                   )}
                 </div>
 
                 {/* Service Title */}
-                <h3 className="mb-3 text-lg font-bold text-black dark:text-white sm:text-xl">
+                <h3 className="mb-3 text-lg font-bold text-white sm:text-xl">
                   {service.title}
                 </h3>
 
                 {/* Service Description */}
-                <p className="mb-6 text-sm leading-relaxed text-body-color dark:text-body-color-dark">
+                <p className="mb-6 text-sm leading-relaxed text-gray-400">
                   {service.description}
                 </p>
 
@@ -106,7 +109,7 @@ const Features = () => {
                   href={service.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-sm font-semibold text-primary transition-colors duration-300 hover:text-primary/80 group-hover:text-primary"
+                  className="inline-flex items-center text-sm font-semibold text-blue-400 transition-colors duration-300 hover:text-blue-300"
                 >
                   {service.cta}
                 </Link>

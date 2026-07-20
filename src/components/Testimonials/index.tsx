@@ -98,21 +98,24 @@ const Testimonials = () => {
 
   return (
     <>
-      <section id="testimonials" className="py-16 bg-gray-50 dark:bg-gray-900 md:py-20 lg:py-28">
+      <section id="testimonials" className="py-16 bg-gray-900 md:py-20 lg:py-28">
         <div className="container">
           {/* Section Header */}
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-black dark:text-white sm:text-4xl md:text-5xl">
-              What Our Clients Say
+            <p className="mb-4 text-sm font-semibold tracking-wider text-blue-400">
+              TESTIMONIALS
+            </p>
+            <h2 className="mb-4 text-3xl font-bold text-white sm:text-4xl md:text-5xl">
+              What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Clients Say</span>
             </h2>
-            <p className="mx-auto max-w-[600px] text-base text-body-color dark:text-body-color-dark sm:text-lg">
+            <p className="mx-auto max-w-[600px] text-base text-gray-400 sm:text-lg">
               Real feedback from startups and businesses we&apos;ve worked with across India and internationally
             </p>
         </div>
 
         {/* Star Rating Bar */}
-        <div className="mb-12 rounded-lg bg-white p-6 text-center shadow-sm dark:bg-gray-dark">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-body-color dark:text-body-color-dark sm:gap-8 sm:text-base">
+        <div className="mb-12 rounded-lg border border-gray-800 bg-gray-800/50 p-6 text-center backdrop-blur-sm">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-gray-400 sm:gap-8 sm:text-base">
             <span className="flex items-center">
               {renderStars(5)} 5.0 Rating
             </span>
@@ -127,7 +130,7 @@ const Testimonials = () => {
             <div
               key={testimonial.id}
               data-card-id={testimonial.id}
-              className={`rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-700 hover:shadow-lg hover:-translate-y-1 dark:border-gray-800 dark:bg-gray-dark ${
+              className={`rounded-xl border border-gray-800 bg-gradient-to-br from-gray-800/50 to-gray-900/50 p-6 shadow-sm transition-all duration-700 hover:shadow-lg hover:border-blue-500/50 hover:-translate-y-1 backdrop-blur-sm ${
                 visibleCards.includes(testimonial.id)
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -139,13 +142,13 @@ const Testimonials = () => {
               </div>
 
               {/* Review Text */}
-              <blockquote className="mb-6 text-base italic leading-relaxed text-body-color dark:text-body-color-dark">
+              <blockquote className="mb-6 text-base italic leading-relaxed text-gray-400">
                 &ldquo;{testimonial.review}&rdquo;
               </blockquote>
 
               {/* Tag Badge */}
               <div className="mb-4">
-                <span className="inline-block rounded-sm bg-primary/10 px-3 py-1 text-xs font-medium text-primary dark:bg-primary/20">
+                <span className="inline-block rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-400">
                   {testimonial.tag}
                 </span>
               </div>
@@ -156,10 +159,10 @@ const Testimonials = () => {
                   {testimonial.initials}
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm font-semibold text-black dark:text-white">
+                  <p className="text-sm font-semibold text-white">
                     {testimonial.name}
                   </p>
-                  <p className="text-xs text-body-color dark:text-body-color-dark">
+                  <p className="text-xs text-gray-400">
                     {testimonial.company}
                   </p>
                 </div>
@@ -170,7 +173,7 @@ const Testimonials = () => {
 
         {/* Bottom CTA */}
         <div className="text-center">
-          <h3 className="mb-6 text-2xl font-bold text-black dark:text-white sm:text-3xl">
+          <h3 className="mb-6 text-2xl font-bold text-white sm:text-3xl">
             Ready to be our next success story?
           </h3>
           <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -178,7 +181,7 @@ const Testimonials = () => {
               href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm bg-primary px-6 py-3 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/90 hover:shadow-lg"
+              className="rounded-sm bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-base font-semibold text-white duration-300 ease-in-out hover:from-blue-500 hover:to-purple-500 hover:shadow-lg"
             >
               📅 Book Free Demo
             </Link>
