@@ -317,7 +317,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <style jsx>{`
+      <style>{`
         @keyframes pulse {
           0% {
             box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
