@@ -439,7 +439,7 @@ const Pricing = () => {
               rel="noopener noreferrer"
               className="block w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2.5 text-center text-sm font-semibold text-white transition-all hover:from-blue-500 hover:to-blue-600"
             >
-              Let's Build Together
+              Let&apos;s Build Together
             </Link>
           </div>
         </div>
@@ -471,7 +471,7 @@ const Pricing = () => {
         {/* Final CTA */}
         <div className="mt-8 text-center">
           <p className="mb-4 text-base text-gray-400 sm:text-lg">
-            Every project is unique. Book a free discovery call and we'll recommend the best engagement model based on your business goals, timeline, and technical requirements.
+            Every project is unique. Book a free discovery call and we&apos;ll recommend the best engagement model based on your business goals, timeline, and technical requirements.
           </p>
           <Link
             href="https://calendar.app.google/BSq3ewGPyAiYNQKn6"

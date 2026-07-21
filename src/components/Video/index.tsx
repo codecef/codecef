@@ -22,13 +22,32 @@ const Video = () => {
   const hasAnimatedStats = useRef(false);
   const visibleStepsRef = useRef<number[]>([]);
 
+  const animateCounter = (key: keyof typeof counters, target: number, duration: number) => {
+    let start = 0;
+    const increment = target / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        start = target;
+        clearInterval(timer);
+        timersRef.current[key] = null;
+      }
+      setCounters(prev => ({ ...prev, [key]: Math.floor(start) }));
+    }, 16);
+    
+    timersRef.current[key] = timer;
+  };
+
   // Cleanup all timers and timeouts on unmount
   useEffect(() => {
     return () => {
-      Object.values(timersRef.current).forEach((timer) => {
+      const timers = timersRef.current;
+      const timeouts = timeoutRefs.current;
+      Object.values(timers).forEach((timer) => {
         if (timer) clearInterval(timer);
       });
-      timeoutRefs.current.forEach(timeout => clearTimeout(timeout));
+      timeouts.forEach(timeout => clearTimeout(timeout));
     };
   }, []);
 
@@ -72,24 +91,7 @@ const Video = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
-
-  const animateCounter = (key: keyof typeof counters, target: number, duration: number) => {
-    let start = 0;
-    const increment = target / (duration / 16);
-    
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        start = target;
-        clearInterval(timer);
-        timersRef.current[key] = null;
-      }
-      setCounters(prev => ({ ...prev, [key]: Math.floor(start) }));
-    }, 16);
-    
-    timersRef.current[key] = timer;
-  };
+  }, [animateCounter]);
 
   const steps = [
     {
