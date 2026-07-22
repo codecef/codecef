@@ -23,7 +23,7 @@ const projects: Project[] = [
   id: "1",
   title: "HUNTONES – AI Music Quiz Platform",
   description: "AI-powered SaaS platform that automatically creates interactive music quizzes from playlists and personal songs in seconds",
-  categories: ["AI SaaS"],
+  categories: ["AI SaaS", "AI Agents"],
   techStack: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "Stripe", "Tailwind CSS"],
   clientOrigin: "foreign",
   liveUrl: "https://www.huntones.com/",
