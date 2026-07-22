@@ -20,7 +20,20 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "1",
+  id: "1",
+  title: "HUNTONES – AI Music Quiz Platform",
+  description: "AI-powered SaaS platform that automatically creates interactive music quizzes from playlists and personal songs in seconds",
+  categories: ["AI SaaS"],
+  techStack: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "Stripe", "Tailwind CSS"],
+  clientOrigin: "foreign",
+  liveUrl: "https://www.huntones.com/",
+  featured: true,
+  problem: "Music teachers, DJs, event organizers and communities needed an engaging way to create interactive music games without manually writing questions or managing gameplay.",
+  solution: "Built a complete AI-powered SaaS platform that analyzes songs, automatically generates music quiz challenges, supports real-time multiplayer gameplay, live leaderboards, room-based sessions, playlist management, AI question generation, subscription billing and responsive cross-device experiences.",
+  result: "Successfully launched a subscription-based AI SaaS platform enabling users to create music quizzes in under two minutes, supporting up to 500 live participants with AI-generated challenges and real-time multiplayer gameplay."
+  },
+  {
+    id: "2",
     title: "Siloq – SEO Architecture Platform",
     description: "AI-powered SaaS that automatically fixes website SEO structure and prevents keyword cannibalization",
     categories: ["AI SaaS"],
@@ -33,7 +46,7 @@ const projects: Project[] = [
     result: "Live paid SaaS with subscription plans from $199–$1999/month, replacing expensive manual SEO audits"
   },
   {
-    id: "2",
+    id: "3",
     title: "TayAI – Academy AI Chatbot",
     description: "RAG-powered AI assistant for Tay's Luxe Academy handling student queries, course guidance and business support 24/7",
     categories: ["AI SaaS"],
@@ -45,7 +58,7 @@ const projects: Project[] = [
     result: "80% reduction in manual support time with students getting answers in under 10 seconds"
   },
   {
-    id: "3",
+    id: "4",
     title: "VICIdial SMS Automation",
     description: "Custom SMS integration for VICIdial call center — auto-sends messages on Press 1 triggers and call dispositions",
     categories: ["AI Automation"],
@@ -57,7 +70,7 @@ const projects: Project[] = [
     result: "100% automated SMS follow-ups with zero manual effort and faster lead response time"
   },
   {
-    id: "4",
+    id: "5",
     title: "Tlinikah – Matrimonial Platform",
     description: "Full-featured matrimonial web app for Muslim marriage matching with advanced profile search and secure messaging",
     categories: ["Enterprise Software"],
@@ -69,7 +82,7 @@ const projects: Project[] = [
     result: "Successfully launched for international Muslim community with active profiles from multiple countries"
   },
   {
-    id: "5",
+    id: "6",
     title: "JSON Formatters – Dev Tools Platform",
     description: "Multi-tool online platform for developers with JSON formatter, validator and essential web utilities",
     categories: ["Enterprise Software"],
@@ -81,7 +94,7 @@ const projects: Project[] = [
     result: "Growing organic developer traffic with a fast lightweight SEO-optimized tool platform"
   },
   {
-    id: "6",
+    id: "7",
     title: "Decimal – Finance & Bookkeeping SaaS",
     description: "Full-featured bookkeeping and accounting platform covering bill pay, tax, invoicing, payroll and financial reporting",
     categories: ["AI SaaS"],
@@ -93,7 +106,7 @@ const projects: Project[] = [
     result: "Clients close books 35% faster, saving 10+ hours per week on accounting tasks"
   },
   {
-  id: "7",
+  id: "8",
   title: "MicCheck – Open Mic Comedy Booking Platform",
   description: "Platform for comedians to register, book open mic slots and perform live stand-up comedy shows",
   categories: ["Enterprise Software"],
@@ -103,20 +116,7 @@ const projects: Project[] = [
   problem: "Aspiring comedians had no simple platform to find open mic shows and book performance slots easily",
   solution: "Built a booking platform where performers can register, reserve stage time, manage show slots and pay online to secure their spot",
   result: "Streamlined open mic bookings with a simple performer registration system and organized show scheduling"
-},
-{
-  id: "1",
-  title: "HUNTONES – AI Music Quiz Platform",
-  description: "AI-powered SaaS platform that automatically creates interactive music quizzes from playlists and personal songs in seconds",
-  categories: ["AI SaaS"],
-  techStack: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "Stripe", "Tailwind CSS"],
-  clientOrigin: "foreign",
-  liveUrl: "https://www.huntones.com/",
-  featured: true,
-  problem: "Music teachers, DJs, event organizers and communities needed an engaging way to create interactive music games without manually writing questions or managing gameplay.",
-  solution: "Built a complete AI-powered SaaS platform that analyzes songs, automatically generates music quiz challenges, supports real-time multiplayer gameplay, live leaderboards, room-based sessions, playlist management, AI question generation, subscription billing and responsive cross-device experiences.",
-  result: "Successfully launched a subscription-based AI SaaS platform enabling users to create music quizzes in under two minutes, supporting up to 500 live participants with AI-generated challenges and real-time multiplayer gameplay."
-},
+}
 ];
 
 
