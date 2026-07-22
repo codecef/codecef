@@ -103,7 +103,20 @@ const projects: Project[] = [
   problem: "Aspiring comedians had no simple platform to find open mic shows and book performance slots easily",
   solution: "Built a booking platform where performers can register, reserve stage time, manage show slots and pay online to secure their spot",
   result: "Streamlined open mic bookings with a simple performer registration system and organized show scheduling"
-}
+},
+{
+  id: "1",
+  title: "HUNTONES – AI Music Quiz Platform",
+  description: "AI-powered SaaS platform that automatically creates interactive music quizzes from playlists and personal songs in seconds",
+  categories: ["AI SaaS"],
+  techStack: ["Next.js", "Node.js", "PostgreSQL", "OpenAI", "Stripe", "Tailwind CSS"],
+  clientOrigin: "foreign",
+  liveUrl: "https://www.huntones.com/",
+  featured: true,
+  problem: "Music teachers, DJs, event organizers and communities needed an engaging way to create interactive music games without manually writing questions or managing gameplay.",
+  solution: "Built a complete AI-powered SaaS platform that analyzes songs, automatically generates music quiz challenges, supports real-time multiplayer gameplay, live leaderboards, room-based sessions, playlist management, AI question generation, subscription billing and responsive cross-device experiences.",
+  result: "Successfully launched a subscription-based AI SaaS platform enabling users to create music quizzes in under two minutes, supporting up to 500 live participants with AI-generated challenges and real-time multiplayer gameplay."
+},
 ];
 
 
